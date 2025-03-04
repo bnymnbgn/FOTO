@@ -10,6 +10,7 @@
 @import 'components/gallery.css';
 @import 'components/services.css';
 @import 'components/comparison.css';
+@import 'components/comparison-swiper.css'; /* Neue CSS-Datei */
 @import 'components/faq.css';
 @import 'components/contact.css';
 @import 'components/footer.css';
