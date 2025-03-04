@@ -1,0 +1,251 @@
+/* Responsive Utilities */
+
+/* Breakpoints:
+  - xs: 0-480px (Mobiltelefone im Hochformat)
+  - sm: 481-768px (Mobiltelefone im Querformat und Tablets im Hochformat)
+  - md: 769-992px (Tablets im Querformat und kleine Laptops)
+  - lg: 993-1200px (Desktop und Laptops)
+  - xl: 1201px+ (Große Bildschirme)
+*/
+
+/* Responsive Display Klassen */
+@media (max-width: 480px) {
+    .hide-xs {
+        display: none !important;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .hide-sm {
+        display: none !important;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+    .hide-md {
+        display: none !important;
+    }
+}
+
+@media (min-width: 993px) and (max-width: 1200px) {
+    .hide-lg {
+        display: none !important;
+    }
+}
+
+@media (min-width: 1201px) {
+    .hide-xl {
+        display: none !important;
+    }
+}
+
+/* Nur anzeigen bei bestimmter Bildschirmgröße */
+.show-xs {
+    display: none;
+}
+
+.show-sm {
+    display: none;
+}
+
+.show-md {
+    display: none;
+}
+
+.show-lg {
+    display: none;
+}
+
+.show-xl {
+    display: none;
+}
+
+@media (max-width: 480px) {
+    .show-xs {
+        display: block !important;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .show-sm {
+        display: block !important;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+    .show-md {
+        display: block !important;
+    }
+}
+
+@media (min-width: 993px) and (max-width: 1200px) {
+    .show-lg {
+        display: block !important;
+    }
+}
+
+@media (min-width: 1201px) {
+    .show-xl {
+        display: block !important;
+    }
+}
+
+/* Mobile First Responsive Padding/Margin */
+.m-xs {
+    margin: 0.5rem;
+}
+
+.m-sm {
+    margin: 1rem;
+}
+
+.m-md {
+    margin: 1.5rem;
+}
+
+.m-lg {
+    margin: 2rem;
+}
+
+.m-xl {
+    margin: 3rem;
+}
+
+.p-xs {
+    padding: 0.5rem;
+}
+
+.p-sm {
+    padding: 1rem;
+}
+
+.p-md {
+    padding: 1.5rem;
+}
+
+.p-lg {
+    padding: 2rem;
+}
+
+.p-xl {
+    padding: 3rem;
+}
+
+/* Responsive Text Alignment */
+.text-center-xs {
+    text-align: center;
+}
+
+@media (min-width: 481px) {
+    .text-center-sm {
+        text-align: center;
+    }
+}
+
+@media (min-width: 769px) {
+    .text-center-md {
+        text-align: center;
+    }
+}
+
+@media (min-width: 993px) {
+    .text-center-lg {
+        text-align: center;
+    }
+}
+
+@media (min-width: 1201px) {
+    .text-center-xl {
+        text-align: center;
+    }
+}
+
+/* Responsive Order */
+@media (max-width: 768px) {
+    .order-first-sm {
+        order: -1;
+    }
+    
+    .order-last-sm {
+        order: 999;
+    }
+}
+
+/* Responsive Flex Direction */
+@media (max-width: 768px) {
+    .flex-column-sm {
+        flex-direction: column !important;
+    }
+    
+    .flex-row-sm {
+        flex-direction: row !important;
+    }
+}
+
+/* Responsive Images */
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Responsive Embed */
+.embed-responsive {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+}
+
+.embed-responsive::before {
+    display: block;
+    content: "";
+}
+
+.embed-responsive-16by9::before {
+    padding-top: 56.25%;
+}
+
+.embed-responsive-4by3::before {
+    padding-top: 75%;
+}
+
+.embed-responsive-1by1::before {
+    padding-top: 100%;
+}
+
+.embed-responsive iframe,
+.embed-responsive embed,
+.embed-responsive object,
+.embed-responsive video {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Responsive Container Padding */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+/* Fix für horizontales Scrollen auf mobilen Geräten */
+body {
+    overflow-x: hidden;
+}
+
+/* Reduced Motion für Nutzer mit Bewegungsempfindlichkeit */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
