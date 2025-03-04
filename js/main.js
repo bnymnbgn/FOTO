@@ -2,7 +2,7 @@
 import { initNavigation } from './modules/navigation.js';
 import { initGallery } from './modules/gallery.js';
 import { initLightbox } from './modules/lightbox.js';
-import { initComparisonSliders } from './modules/comparison.js';
+import { initComparisonSwiper } from './modules/comparison-swiper.js'; // Neues Modul
 import { initFAQ } from './modules/faq.js';
 import { initScrollAnimations } from './modules/animations.js';
 import { initFormValidation } from './modules/form.js';
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initNavigation();
     initGallery();
     initLightbox();
-    initComparisonSliders();
+    initComparisonSwiper(); // Statt initComparisonSliders()
     initFAQ();
     initScrollAnimations();
     initFormValidation();
