@@ -1,0 +1,22 @@
+/* Grundlegende Stile und Variablen */
+@import 'variables.css';
+@import 'layout.css';
+@import 'backgrounds.css';
+
+/* Komponenten */
+@import 'components/header.css';
+@import 'components/hero.css';
+@import 'components/about.css';
+@import 'components/gallery.css';
+@import 'components/services.css';
+@import 'components/comparison.css';
+@import 'components/faq.css';
+@import 'components/contact.css';
+@import 'components/footer.css';
+@import 'components/lightbox.css';
+
+/* Utilities */
+@import 'utilities/animations.css';
+@import 'utilities/buttons.css';
+@import 'utilities/responsive.css';
+@import 'utilities/typography.css';
