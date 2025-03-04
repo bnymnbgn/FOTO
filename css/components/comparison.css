@@ -1,0 +1,134 @@
+/* Einfache Comparison Slider Styles */
+
+/* Container für den ganzen Slider-Bereich */
+.comparison-wrapper {
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+/* Der eigentliche Slider-Container */
+.comparison-slider {
+    position: relative;
+    overflow: hidden;
+    border: 4px solid white;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Nachher-Bild (im Hintergrund, volle Breite) */
+.comparison-after {
+    display: block;
+    width: 100%;
+}
+
+/* Vorher-Bild-Container */
+.comparison-before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50%; /* Startposition */
+    overflow: hidden;
+}
+
+/* Vorher-Bild */
+.comparison-before img {
+    display: block;
+    height: 100%;
+    width: auto;
+    max-width: none;
+    /* Diese Berechnung stellt sicher, dass das Bild die gleiche Breite wie der Container hat */
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* Slider-Handle */
+.comparison-handle {
+    position: absolute;
+    top: 0;
+    left: 50%; /* Wird per JS gesteuert */
+    width: 4px;
+    height: 100%;
+    background: white;
+    cursor: ew-resize; /* Wichtig für UX */
+    z-index: 30;
+}
+
+/* Handle-Button */
+.comparison-handle::after {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    z-index: 31;
+}
+
+/* Icon im Handle */
+.comparison-handle i {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 16px;
+    z-index: 32;
+}
+
+/* Hover-Effekt für den Handle */
+.comparison-handle:hover::after {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Aktiver Zustand für den Handle */
+.comparison-handle.active::after {
+    transform: translate(-50%, -50%) scale(1.15);
+}
+
+/* Labels */
+.comparison-label {
+    position: absolute;
+    top: 15px;
+    padding: 5px 15px;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 20px;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.comparison-label.before {
+    left: 15px;
+}
+
+.comparison-label.after {
+    right: 15px;
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 768px) {
+    .comparison-handle::after {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .comparison-handle::after {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .comparison-label {
+        font-size: 12px;
+        padding: 4px 12px;
+    }
+}

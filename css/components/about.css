@@ -1,1 +1,86 @@
+/* About Section Styles */
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-top: 40px;
+}
 
+.about-image {
+    flex: 1;
+    position: relative;
+    max-width: 400px;
+}
+
+.avatar {
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: var(--shadow);
+    border: 5px solid white;
+}
+
+.about-decorations {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.decoration-element {
+    position: absolute;
+    font-size: 2rem;
+    animation: float 6s ease-in-out infinite;
+}
+
+.decoration-element:nth-child(1) {
+    top: 10%;
+    right: 0;
+    color: var(--primary-color);
+    animation-delay: 0s;
+}
+
+.decoration-element:nth-child(2) {
+    bottom: 15%;
+    left: 0;
+    color: var(--secondary-color);
+    animation-delay: 1.5s;
+}
+
+.decoration-element:nth-child(3) {
+    top: 60%;
+    right: 10%;
+    color: var(--accent-color);
+    animation-delay: 3s;
+}
+
+.about-text {
+    flex: 2;
+}
+
+.about-text h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.about-text p {
+    margin-bottom: 15px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-image {
+        margin: 0 auto 30px;
+    }
+
+    .about-text {
+        text-align: center;
+    }
+}
