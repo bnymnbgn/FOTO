@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professionelle Bearbeitung von Kinderfotografien. Verwandeln Sie normale Kinderfotos in magische Kunstwerke mit unseren kreativen Bildbearbeitungsdienstleistungen.">
+    <title>FotoZauber - Magische Kinderfotografie & kreative Bildbearbeitung</title>
+    
+    <!-- CSS Dateien -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    
+    <!-- JavaScript Dateien -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="js/main.js" type="module"></script>
+</head>
+<body style="background: linear-gradient(170.96deg, #ff85a2 0%, #64c4ed 100%); background-attachment: fixed;">
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo"><i class="fas fa-camera"></i>FotoZauber</a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">Über mich</a></li>
+                    <li><a href="#gallery">Galerie</a></li>
+                    <li><a href="#services">Leistungen</a></li>
+                    <li><a href="#comparison">Vorher/Nachher</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="floating-element bubble-1"><i class="fas fa-star"></i></div>
+        <div class="floating-element bubble-2"><i class="fas fa-heart"></i></div>
+        <div class="floating-element bubble-3"><i class="fas fa-cloud"></i></div>
+        <div class="floating-element bubble-4"><i class="fas fa-magic"></i></div>
+        <div class="floating-element bubble-5"><i class="fas fa-child"></i></div>
+        
+        <div class="hero-content fade-in">
+            <h1>Magische Momente für dein Kind – Individuelle Fotokunst</h1>
+            <p>Wir verwandeln gewöhnliche Kinderfotografien in außergewöhnliche Kunstwerke, die die Fantasie Ihrer Kleinen zum Leben erwecken.</p>
+            <div class="hero-buttons">
+                <a href="#gallery" class="btn">Galerie entdecken</a>
+                <a href="#contact" class="btn btn-secondary">Jetzt anfragen</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Über Mich</h2>
+                <p>Lernen Sie mich und meine Leidenschaft für Kinderfotografie kennen.</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-image slide-in-left">
+                    <img src="/api/placeholder/400/400" alt="Portrait des Fotografen" class="avatar">
+                    <div class="about-decorations">
+                        <span class="decoration-element"><i class="fas fa-camera"></i></span>
+                        <span class="decoration-element"><i class="fas fa-palette"></i></span>
+                        <span class="decoration-element"><i class="fas fa-heart"></i></span>
+                    </div>
+                </div>
+                
+                <div class="about-text slide-in-right">
+                    <h3>Hallo, ich bin Sarah!</h3>
+                    <p>Als leidenschaftliche Fotografin und Grafikdesignerin habe ich es mir zur Aufgabe gemacht, die schönsten Momente Ihrer Kinder in magische Kunstwerke zu verwandeln.</p>
+                    <p>Meine Reise begann vor 8 Jahren, als ich nach meinem Kunstdesign-Studium entdeckte, wie viel Freude es mir bereitet, gewöhnliche Fotografien in außergewöhnliche Erinnerungsstücke zu verwandeln.</p>
+                    <p>Was mich inspiriert? Die unendliche Fantasie von Kindern und ihr Staunen über die Welt. In jedem Kind steckt ein Superheld, eine Prinzessin oder ein Entdecker - und ich liebe es, diese Geschichten durch meine Bildbearbeitung zum Leben zu erwecken.</p>
+                    <a href="#contact" class="btn">Kontaktieren Sie mich</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Gallery Section mit nahtloser Integration -->
+<section id="gallery" class="gallery-section">
+    <div class="container">
+        <!-- Gallery Header with Title -->
+        <div class="section-title">
+            <h2>Unsere Galerie</h2>
+            <p>Entdecken Sie unsere Auswahl an bearbeiteten Kinderfotografien und lassen Sie sich inspirieren.</p>
+        </div>
+        
+        <!-- Gallery Filter Buttons -->
+        <div class="gallery-filter">
+            <button class="filter-btn active" data-filter="all">Alle</button>
+            <button class="filter-btn" data-filter="fantasy">Fantasy</button>
+            <button class="filter-btn" data-filter="underwater">Unterwasser</button>
+            <button class="filter-btn" data-filter="space">Weltraum</button>
+        </div>
+    
+        <!-- Full-Width Modern Gallery Layout -->
+        <div class="gallery-fullwidth">
+            <!-- Row 1 -->
+            <div class="gallery-row">
+                <div class="gallery-item large" data-category="fantasy">
+                    <img src="assets\img\Halid 1.jpg" alt="Magischer Wald">
+                    <div class="gallery-overlay">
+                        <h3>Magischer Wald</h3>
+                        <p>Fantasievolle Bearbeitung mit Waldelementen</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item medium" data-category="space">
+                    <img src="assets\img\klem 1.jpg" alt="Sternenstaub">
+                    <div class="gallery-overlay">
+                        <h3>Sternenstaub</h3>
+                        <p>Magische Nachtaufnahme mit Sterneneffekten</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item medium" data-category="underwater">
+                    <img src="assets\img\randombebe Kopie.jpg" alt="Unterwasserwelt">
+                    <div class="gallery-overlay">
+                        <h3>Unterwasserwelt</h3>
+                        <p>Tauchen Sie ein in eine magische Wasserwelt</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Row 2 -->
+            <div class="gallery-row">
+                <div class="gallery-item medium" data-category="fantasy">
+                    <img src="assets\img\big-elephant-eating-and-starring-at-the-camera-2023-11-27-04-46-04-utc Kopie.jpg" alt="Märchenprinzessin">
+                    <div class="gallery-overlay">
+                        <h3>Märchenprinzessin</h3>
+                        <p>Zauberhaftes Motiv mit Glitzereffekten</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item large" data-category="space">
+                    <img src="assets\img\TIGER Kopie2.jpg" alt="Superheld">
+                    <div class="gallery-overlay">
+                        <h3>Superheld</h3>
+                        <p>Actionreiche Bearbeitung für kleine Helden</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Row 3 - Wide item -->
+            <div class="gallery-row">
+                <div class="gallery-item wide" data-category="fantasy">
+                    <img src="assets\img\VMQ52CgMRQKIYUDwmwzI9w Kopie.jpg" alt="Fantasielandschaft">
+                    <div class="gallery-overlay">
+                        <h3>Fantasielandschaft</h3>
+                        <p>Eine weite magische Welt voller Wunder und Abenteuer</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Row 4 -->
+            <div class="gallery-row">
+                <div class="gallery-item medium" data-category="underwater">
+                    <img src="/api/placeholder/600/600" alt="Korallenriff">
+                    <div class="gallery-overlay">
+                        <h3>Korallenriff</h3>
+                        <p>Bunte Unterwasserwelt mit exotischen Fischen</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item medium" data-category="fantasy">
+                    <img src="/api/placeholder/600/600" alt="Feenwald">
+                    <div class="gallery-overlay">
+                        <h3>Feenwald</h3>
+                        <p>Magische Lichter im verzauberten Wald</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item medium" data-category="space">
+                    <img src="/api/placeholder/600/600" alt="Mondlandung">
+                    <div class="gallery-overlay">
+                        <h3>Mondlandung</h3>
+                        <p>Ein kleiner Schritt für ein Kind, ein großer für die Fantasie</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Row 5 with two items -->
+            <div class="gallery-row">
+                <div class="gallery-item large" data-category="fantasy">
+                    <img src="/api/placeholder/1200/600" alt="Drachenzähmer">
+                    <div class="gallery-overlay">
+                        <h3>Drachenzähmer</h3>
+                        <p>Abenteuer mit fantastischen Kreaturen</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item medium" data-category="underwater">
+                    <img src="/api/placeholder/600/600" alt="Meerjungfrau">
+                    <div class="gallery-overlay">
+                        <h3>Meerjungfrau</h3>
+                        <p>Verwandlung in eine Unterwasser-Prinzessin</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Load More Button -->
+        <div class="gallery-more">
+            <a href="#" class="btn">Mehr Fotos anzeigen</a>
+        </div>
+    </div>
+</section>
+
+<section id="services">
+    <div class="container">
+        <div class="section-title">
+            <h2>Unsere Leistungen</h2>
+            <p>Wir bieten verschiedene Bearbeitungspakete an, um jedem Budget und Wunsch gerecht zu werden.</p>
+        </div>
+        
+        <div class="services">
+            <div class="service-card fade-in">
+                <div class="service-icon"><i class="fas fa-star"></i></div>
+                <h3>Kreative Freiheit</h3>
+                <p>Wir verschönern Ihr Foto mit subtilen Effekten und Anpassungen, die den natürlichen Charme Ihres Kindes hervorheben.</p>
+                <ul class="service-features">
+                    <li>Farb- und Helligkeitsoptimierung</li>
+                    <li>Hautretusche und Bildverbesserung</li>
+                    <li>Leichte magische Effekte</li>
+                </ul>
+                <div class="service-price">ab 39,99 €</div>
+                <a href="#contact" class="btn">Jetzt buchen</a>
+            </div>
+            
+            <div class="service-card featured fade-in">
+                <div class="service-tag">Beliebt</div>
+                <div class="service-icon"><i class="fas fa-magic"></i></div>
+                <h3>Wunsch-Szene</h3>
+                <p>Ihr Kind in einer komplett neuen, magischen Umgebung - vom Unterwasserabenteuer bis zur Märchenwelt.</p>
+                <ul class="service-features">
+                    <li>Kompletter Hintergrundaustausch</li>
+                    <li>Thematische Gestaltung nach Wunsch</li>
+                    <li>Hinzufügen passender magischer Elemente</li>
+                </ul>
+                <div class="service-price">ab 59,99 €</div>
+                <a href="#contact" class="btn">Jetzt buchen</a>
+            </div>
+            
+            <div class="service-card fade-in">
+                <div class="service-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+                <h3>Magische Kombination</h3>
+                <p>Das ultimative Erlebnis mit mehreren bearbeiteten Varianten und einer Geschichte, die Ihr Kind begeistern wird.</p>
+                <ul class="service-features">
+                    <li>2-3 unterschiedliche magische Szenen</li>
+                    <li>Digitales Mini-Fotobuch</li>
+                    <li>Personalisierte Erzählung zur Serie</li>
+                </ul>
+                <div class="service-price">ab 89,99 €</div>
+                <a href="#contact" class="btn">Jetzt buchen</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Comparison Slider Section -->
+<!-- Einfache Comparison Slider Section -->
+<section id="comparison">
+    <div class="container">
+        <div class="section-title">
+            <h2>Vorher / Nachher</h2>
+            <p>Sehen Sie den Unterschied zwischen dem Originalbild und unserer professionellen Bearbeitung. Verschieben Sie den Slider, um die Transformation zu entdecken.</p>
+        </div>
+        
+        <!-- Super einfache Slider-Struktur -->
+        <div class="comparison-slider">
+            <!-- Nachher-Bild (im Hintergrund) -->
+            <img class="comparison-after" src="assets/img/randombebe Kopie.jpg" alt="Nach der Bearbeitung">
+            
+            <!-- Vorher-Bild-Container -->
+            <div class="comparison-before" style="width: 50%;">
+                <img src="assets/img/randombebe.jpg" alt="Vor der Bearbeitung">
+            </div>
+            
+            <!-- Slider-Handle -->
+            <div class="comparison-handle" style="left: 50%;">
+                <i class="fas fa-arrows-left-right"></i>
+            </div>
+            
+            <!-- Labels -->
+            <span class="comparison-label before">Vorher</span>
+            <span class="comparison-label after">Nachher</span>
+        </div>
+    </div>
+</section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Häufig gestellte Fragen</h2>
+                <p>Hier finden Sie Antworten auf die am häufigsten gestellten Fragen.</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h3>Wie lange dauert die Bearbeitung eines Fotos?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Je nach Komplexität des gewünschten Effekts und aktuellem Auftragsvolumen beträgt die Bearbeitungszeit zwischen 3-7 Werktagen. Bei besonders aufwändigen Projekten oder in der Hochsaison kann es etwas länger dauern. Sie werden jedoch immer über den aktuellen Status informiert.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h3>Welche Bildformate erhalte ich nach der Bearbeitung?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sie erhalten Ihre bearbeiteten Bilder in hochauflösender Qualität im JPG-Format, optimal für Ausdrucke und digitale Nutzung. Auf Wunsch können wir auch andere Formate wie PNG (für transparente Hintergründe) oder TIFF (für professionelle Drucke) bereitstellen.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h3>Kann ich spezielle Wünsche für die Bearbeitung äußern?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolut! Wir legen großen Wert auf Ihre individuellen Wünsche. Im Kontaktformular können Sie Ihre Vorstellungen detailliert beschreiben. Nach Erhalt Ihres Auftrags stimmen wir uns mit Ihnen ab und senden Ihnen Vorschläge zur Bestätigung, bevor wir mit der endgültigen Bearbeitung beginnen.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h3>Welche Zahlungsmethoden werden akzeptiert?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Wir bieten verschiedene Zahlungsmöglichkeiten an: PayPal, Kreditkarte (Visa, Mastercard, American Express) und Banküberweisung. Die Zahlung erfolgt erst nach Ihrer Zufriedenheit mit dem Vorschau-Ergebnis.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h3>Wie hoch ist die Auflösung der bearbeiteten Bilder?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Wir bearbeiten Ihre Bilder in der höchstmöglichen Qualität, abhängig von der Auflösung Ihres Originalfotos. Für optimale Ergebnisse empfehlen wir, Bilder mit mindestens 8 Megapixeln zu verwenden. Die bearbeiteten Fotos sind für Ausdrucke bis zu 60x40 cm geeignet.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Kontaktieren Sie uns</h2>
+                <p>Haben Sie Fragen oder möchten Sie ein Angebot erhalten? Füllen Sie das Formular aus und wir melden uns bei Ihnen.</p>
+            </div>
+            
+            <div class="contact-form fade-in">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">E-Mail *</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Telefon</label>
+                        <input type="tel" id="phone" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service">Gewünschtes Paket</label>
+                        <select id="service" class="form-control">
+                            <option value="">Bitte auswählen</option>
+                            <option value="kreative-freiheit">Kreative Freiheit (ab 39,99 €)</option>
+                            <option value="wunsch-szene">Wunsch-Szene (ab 59,99 €)</option>
+                            <option value="magische-kombination">Magische Kombination (ab 89,99 €)</option>
+                            <option value="custom">Individuelles Angebot</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Ihre Nachricht *</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Zahlungsmethode</label>
+                        <div class="payment-options">
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="paypal">
+                                PayPal <i class="fab fa-paypal payment-icon"></i>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="credit-card">
+                                Kreditkarte <i class="far fa-credit-card payment-icon"></i>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="bank-transfer">
+                                Überweisung <i class="fas fa-university payment-icon"></i>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="checkbox" id="consent" required>
+                        <label for="consent">Ich stimme zu, dass meine Daten gemäß der Datenschutzerklärung verarbeitet werden.</label>
+                    </div>
+                    
+                    <button type="submit" class="btn">Nachricht senden</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Container -->
+    <div class="lightbox" id="gallery-lightbox">
+        <div class="lightbox-content">
+            <!-- Der Vergleichscontainer wird hier dynamisch eingefügt -->
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+            <div class="lightbox-controls">
+                <button class="lightbox-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="lightbox-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+        <span class="lightbox-close">&times;</span>
+    </div>
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>FotoZauber</h3>
+                <p>Professionelle Bearbeitung von Kinderfotografien mit kreativen und magischen Elementen.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Kontakt</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> info@fotozauber.de</li>
+                    <li><i class="fas fa-phone"></i> +49 123 456789</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Musterstraße 123, 12345 Stadt</li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Schnellzugriff</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">Über mich</a></li>
+                    <li><a href="#gallery">Galerie</a></li>
+                    <li><a href="#services">Leistungen</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Rechtliches</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Impressum</a></li>
+                    <li><a href="#">Datenschutz</a></li>
+                    <li><a href="#">AGB</a></li>
+                    <li><a href="#">Widerrufsrecht</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 FotoZauber. Alle Rechte vorbehalten.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
