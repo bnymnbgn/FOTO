@@ -1,0 +1,190 @@
+/* Technologie-Sektion Hauptstile */
+#technologies {
+    padding: 80px 0;
+    color: var(--dark-color);
+    position: relative;
+}
+
+/* Überschriften-Stil anpassen */
+#technologies .section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+#technologies .section-title h2 {
+    color: white;
+}
+
+#technologies .section-title p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+#technologies .content-box {
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(5px);
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    padding: 40px;
+    margin-bottom: 0;
+}
+
+#technologies .tech-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+/* Linke Spalte mit Beschreibung und Liste */
+#technologies .tech-left {
+    flex: 1;
+}
+
+#technologies .tech-subtitle {
+    display: block;
+    color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+#technologies .tech-left h3 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+#technologies .tech-description {
+    margin-bottom: 30px;
+    line-height: 1.6;
+    color: var(--dark-color);
+}
+
+/* Service Features Liste */
+#technologies .service-features {
+    list-style: none;
+    margin: 15px 0 20px 0;
+    padding: 0;
+}
+
+#technologies .service-features li {
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 25px;
+    color: var(--dark-color);
+}
+
+#technologies .service-features li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+/* Rechte Spalte mit Karten-Grid */
+#technologies .tech-right {
+    flex: 1;
+}
+
+#technologies .tech-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+/* Einzelne Technologie-Karten */
+#technologies .tech-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 25px;
+    position: relative;
+    height: auto;
+    min-height: 200px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+}
+
+#technologies .tech-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Kartentitel */
+#technologies .tech-card h4 {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    margin: 15px 0 10px;
+    font-weight: 600;
+}
+
+/* Kartentext */
+#technologies .tech-card p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--dark-color);
+    margin-bottom: 30px;
+}
+
+/* Icon-Stil in Karten */
+#technologies .tech-icon {
+    width: 40px;
+    height: 40px;
+    color: #64c4ed;
+}
+
+/* Pfeil in Karten */
+#technologies .card-arrow {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    color: #ffd166;
+    font-size: 24px;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+#technologies .card-arrow:hover {
+    transform: translateX(5px);
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 992px) {
+    #technologies .tech-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    #technologies .tech-left, 
+    #technologies .tech-right {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    #technologies .tech-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    #technologies .tech-left h3 {
+        font-size: 1.5rem;
+        color: var(--primary-color) !important; /* Überschreibt etwaige Vererbung */
+    }
+    
+    #technologies .content-box {
+        padding: 20px;
+    }
+
+    /* Farbkorrekturen für Mobile */
+    #technologies .tech-subtitle {
+        color: rgba(0, 0, 0, 0.6) !important;
+    }
+
+    #technologies .tech-description,
+    #technologies .service-features li,
+    #technologies .tech-card p {
+        color: var(--dark-color) !important;
+    }
+}
+
