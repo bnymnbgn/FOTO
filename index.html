@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/main.css">
+
+    <!-- VANTA.BIRDS benötigte Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
     
     <!-- JavaScript Dateien -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
@@ -44,23 +48,104 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="floating-element bubble-1"><i class="fas fa-star"></i></div>
-        <div class="floating-element bubble-2"><i class="fas fa-heart"></i></div>
-        <div class="floating-element bubble-3"><i class="fas fa-cloud"></i></div>
-        <div class="floating-element bubble-4"><i class="fas fa-magic"></i></div>
-        <div class="floating-element bubble-5"><i class="fas fa-child"></i></div>
+    <!-- Verbesserte Hero Section mit 3D-Perspektive und VANTA.BIRDS Hintergrund -->
+    <section id="home" class="hero perspective-hero">
+        <!-- VANTA.BIRDS wird als Hintergrund eingesetzt -->
         
-        <div class="hero-content fade-in">
-            <h1>Magische Momente für dein Kind – Individuelle Fotokunst</h1>
-            <p>Wir verwandeln gewöhnliche Kinderfotografien in außergewöhnliche Kunstwerke, die die Fantasie Ihrer Kleinen zum Leben erwecken.</p>
-            <div class="hero-buttons">
-                <a href="#gallery" class="btn">Galerie entdecken</a>
-                <a href="#contact" class="btn btn-secondary">Jetzt anfragen</a>
+        <!-- 3D-Szene mit Mausverfolgung -->
+        <div class="perspective-scene" id="perspectiveScene">
+            <!-- Linke Seite mit Text -->
+            <div class="hero-content" data-depth="80">
+                <div class="hero-badge">
+                    <span>Kreative Bildbearbeitung</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    <span class="title-line">Erwecke</span>
+                    <span class="title-line accent">
+                        <span class="gradient-text">Magie</span>
+                        <span class="title-underline"></span>
+                    </span>
+                    <span class="title-line">zum Leben</span>
+                </h1>
+                
+                <p class="hero-description">
+                    Wir verwandeln gewöhnliche Kinderfotografien in außergewöhnliche Kunstwerke, 
+                    die die Fantasie Ihrer Kleinen zum Leben erwecken und unvergessliche Erinnerungen schaffen.
+                </p>
+                
+                <div class="hero-buttons">
+                    <a href="#gallery" class="hero-btn-primary">
+                        <span>Galerie entdecken</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#contact" class="hero-btn-secondary">Kontakt aufnehmen</a>
+                </div>
+                
+                <!-- Bewertungs-Badge -->
+                <div class="rating-badge">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span>Über 500 zufriedene Kunden</span>
+                </div>
+            </div>
+            
+            <!-- Rechte Seite mit Bildkomposition -->
+            <div class="hero-images" data-depth="60">
+                <!-- Hinterste Bild-Ebene -->
+                <div class="image-layer back-layer">
+                    <div class="image-card">
+                        <img src="assets/img/TIGER Kopie2.jpg" alt="Kreatives Kinderfoto" class="image-cover">
+                    </div>
+                </div>
+                
+                <!-- Mittlere Bild-Ebene -->
+                <div class="image-layer middle-layer">
+                    <div class="image-card">
+                        <img src="assets/img/randombebe Kopie.jpg" alt="Magische Kinderportraits" class="image-cover">
+                    </div>
+                </div>
+                
+                <!-- Vorderste Bild-Ebene -->
+                <div class="image-layer front-layer">
+                    <div class="image-card">
+                        <img src="assets/img/Halid 1.jpg" alt="Fantasiewelt für Kinder" class="image-cover">
+                        
+                        <!-- Badge auf dem Bild -->
+                        <div class="image-badge">Kinderträume</div>
+                        
+                        <!-- Schwebende Elemente -->
+                        <div class="floating-element star-element">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        
+                        <div class="floating-element magic-element">
+                            <i class="fas fa-magic"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll-Indikator -->
+        <div class="scroll-indicator">
+            <span>Entdecke mehr</span>
+            <div class="mouse-icon">
+                <div class="mouse-wheel"></div>
             </div>
         </div>
     </section>
+    
+    <!-- Glowing Circles werden per JavaScript hinzugefügt -->
+    <!-- <div class="glow-circle glow-circle-1"></div>
+    <div class="glow-circle glow-circle-2"></div>
+    <div class="glow-circle glow-circle-3"></div> -->
+</section>
 
     <!-- About Me Section -->
     <section id="about">
@@ -552,6 +637,103 @@
         </div>
         <span class="lightbox-close">&times;</span>
     </div>
+
+    <!-- Blog Section -->
+<section id="blog" class="blog-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Unser Blog</h2>
+        <p>Tipps, Inspirationen und Einblicke in die Welt der magischen Kinderfotografie</p>
+      </div>
+      
+      <div class="blog-container">
+        <!-- Blog Filter -->
+        <div class="blog-filter">
+          <button class="blog-filter-btn active" data-filter="all">Alle Artikel</button>
+          <button class="blog-filter-btn" data-filter="tips">Fotografie-Tipps</button>
+          <button class="blog-filter-btn" data-filter="behind">Hinter den Kulissen</button>
+          <button class="blog-filter-btn" data-filter="projects">Kundenprojekte</button>
+        </div>
+        
+        <!-- Blog Grid -->
+        <div class="blog-grid">
+          <!-- Blog Card 1 -->
+          <article class="blog-card" data-category="tips">
+            <div class="blog-card-image">
+              <img src="/api/placeholder/600/400" alt="Kinderfotografie bei unterschiedlichem Licht" class="img-fluid">
+              <span class="blog-category">Fotografie-Tipps</span>
+            </div>
+            <div class="blog-card-content">
+              <div class="blog-meta">
+                <span class="blog-date"><i class="far fa-calendar"></i> 3. März 2023</span>
+                <span class="blog-read-time"><i class="far fa-clock"></i> 5 Min. Lesezeit</span>
+              </div>
+              <h3 class="blog-title">Die besten Lichtverhältnisse für unvergessliche Kinderfotos</h3>
+              <p class="blog-excerpt">Erfahre, wie du mit natürlichem Licht arbeiten kannst, um die schönsten Momente deiner Kinder einzufangen – egal ob drinnen oder draußen.</p>
+              <a href="#" class="blog-read-more">Weiterlesen <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </article>
+          
+          <!-- Blog Card 2 -->
+          <article class="blog-card" data-category="behind">
+            <div class="blog-card-image">
+              <img src="/api/placeholder/600/400" alt="Bearbeitung eines Unterwasserbildes" class="img-fluid">
+              <span class="blog-category">Hinter den Kulissen</span>
+            </div>
+            <div class="blog-card-content">
+              <div class="blog-meta">
+                <span class="blog-date"><i class="far fa-calendar"></i> 15. Februar 2023</span>
+                <span class="blog-read-time"><i class="far fa-clock"></i> 8 Min. Lesezeit</span>
+              </div>
+              <h3 class="blog-title">Der Entstehungsprozess einer Unterwasser-Fantasie</h3>
+              <p class="blog-excerpt">Ein Blick hinter die Kulissen: So verwandeln wir ein gewöhnliches Kinderfoto in eine magische Unterwasserwelt voller Meerjungfrauen und exotischer Fische.</p>
+              <a href="#" class="blog-read-more">Weiterlesen <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </article>
+          
+          <!-- Blog Card 3 -->
+          <article class="blog-card featured-post" data-category="projects">
+            <div class="blog-card-image">
+              <img src="/api/placeholder/600/400" alt="Prinzessinnen-Fotoshooting" class="img-fluid">
+              <span class="blog-category">Kundenprojekte</span>
+              <span class="featured-badge">Beliebt</span>
+            </div>
+            <div class="blog-card-content">
+              <div class="blog-meta">
+                <span class="blog-date"><i class="far fa-calendar"></i> 28. Januar 2023</span>
+                <span class="blog-read-time"><i class="far fa-clock"></i> 6 Min. Lesezeit</span>
+              </div>
+              <h3 class="blog-title">Prinzessinnen-Zauber: Lisas magisches Fotoshooting</h3>
+              <p class="blog-excerpt">Wie wir den Traum der 5-jährigen Lisa wahr werden ließen – eine Verwandlung in eine echte Prinzessin in einem verzauberten Schloss.</p>
+              <a href="#" class="blog-read-more">Weiterlesen <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </article>
+          
+          <!-- Blog Card 4 -->
+          <article class="blog-card" data-category="tips">
+            <div class="blog-card-image">
+              <img src="/api/placeholder/600/400" alt="Vorbereitung auf ein Kinderfotoshooting" class="img-fluid">
+              <span class="blog-category">Fotografie-Tipps</span>
+            </div>
+            <div class="blog-card-content">
+              <div class="blog-meta">
+                <span class="blog-date"><i class="far fa-calendar"></i> 5. Januar 2023</span>
+                <span class="blog-read-time"><i class="far fa-clock"></i> 4 Min. Lesezeit</span>
+              </div>
+              <h3 class="blog-title">Die perfekte Vorbereitung für ein gelungenes Kinderfotoshooting</h3>
+              <p class="blog-excerpt">Mit diesen 7 einfachen Tipps wird euer nächstes Kinderfotoshooting garantiert entspannt und erfolgreich – für Eltern und Kinder.</p>
+              <a href="#" class="blog-read-more">Weiterlesen <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </article>
+        </div>
+        
+        <!-- View All Button -->
+        <div class="blog-more">
+          <a href="#" class="btn">Alle Blogartikel ansehen</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
     <!-- Footer -->
 <footer>
