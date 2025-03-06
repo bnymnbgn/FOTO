@@ -11,10 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/main.css">
-
-    <!-- VANTA.BIRDS benötigte Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
+    
     
     <!-- JavaScript Dateien -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
@@ -48,98 +45,89 @@
         </div>
     </header>
 
-    <!-- Verbesserte Hero Section mit 3D-Perspektive und VANTA.BIRDS Hintergrund -->
-    <section id="home" class="hero perspective-hero">
-        <!-- VANTA.BIRDS wird als Hintergrund eingesetzt -->
+<!-- Verbesserte Hero Section mit 3D-Perspektive -->
+<section id="home" class="hero perspective-hero">
+    <!-- Partikel-Container für die schwebenden Elemente -->
+    <div class="particles-container">
+        <!-- Partikel werden dynamisch per JavaScript hinzugefügt -->
+    </div>
+    
+    <!-- 3D-Szene mit Mausverfolgung -->
+    <div class="perspective-scene" id="perspectiveScene">
+        <!-- Linke Seite mit Text -->
+        <div class="hero-content" data-depth="80">
+            <div class="hero-badge">
+                <span>Kreative Bildbearbeitung</span>
+            </div>
+            
+            <h1 class="hero-title">
+                <span class="title-line">Erwecke</span>
+                <span class="title-line accent">
+                    <span class="gradient-text">Magie</span>
+                    <span class="title-underline"></span>
+                </span>
+                <span class="title-line">zum Leben</span>
+            </h1>
+            
+            <p class="hero-description">
+                Wir verwandeln gewöhnliche Kinderfotografien in außergewöhnliche Kunstwerke, 
+                die die Fantasie Ihrer Kleinen zum Leben erwecken und unvergessliche Erinnerungen schaffen.
+            </p>
+            
+            <div class="hero-buttons">
+                <a href="#gallery" class="hero-btn-primary">
+                    <span>Galerie entdecken</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#contact" class="hero-btn-secondary">Kontakt aufnehmen</a>
+            </div>
+            
+        </div>
         
-        <!-- 3D-Szene mit Mausverfolgung -->
-        <div class="perspective-scene" id="perspectiveScene">
-            <!-- Linke Seite mit Text -->
-            <div class="hero-content" data-depth="80">
-                <div class="hero-badge">
-                    <span>Kreative Bildbearbeitung</span>
-                </div>
-                
-                <h1 class="hero-title">
-                    <span class="title-line">Erwecke</span>
-                    <span class="title-line accent">
-                        <span class="gradient-text">Magie</span>
-                        <span class="title-underline"></span>
-                    </span>
-                    <span class="title-line">zum Leben</span>
-                </h1>
-                
-                <p class="hero-description">
-                    Wir verwandeln gewöhnliche Kinderfotografien in außergewöhnliche Kunstwerke, 
-                    die die Fantasie Ihrer Kleinen zum Leben erwecken und unvergessliche Erinnerungen schaffen.
-                </p>
-                
-                <div class="hero-buttons">
-                    <a href="#gallery" class="hero-btn-primary">
-                        <span>Galerie entdecken</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <a href="#contact" class="hero-btn-secondary">Kontakt aufnehmen</a>
-                </div>
-                
-                <!-- Bewertungs-Badge -->
-                <div class="rating-badge">
-                    <div class="rating-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <span>Über 500 zufriedene Kunden</span>
+        <!-- Rechte Seite mit Bildkomposition -->
+        <div class="hero-images" data-depth="60">
+            <!-- Hinterste Bild-Ebene -->
+            <div class="image-layer back-layer">
+                <div class="image-card">
+                    <img src="assets/img/TIGER Kopie2.jpg" alt="Kreatives Kinderfoto" class="image-cover">
                 </div>
             </div>
             
-            <!-- Rechte Seite mit Bildkomposition -->
-            <div class="hero-images" data-depth="60">
-                <!-- Hinterste Bild-Ebene -->
-                <div class="image-layer back-layer">
-                    <div class="image-card">
-                        <img src="assets/img/TIGER Kopie2.jpg" alt="Kreatives Kinderfoto" class="image-cover">
-                    </div>
+            <!-- Mittlere Bild-Ebene -->
+            <div class="image-layer middle-layer">
+                <div class="image-card">
+                    <img src="assets/img/randombebe Kopie.jpg" alt="Magische Kinderportraits" class="image-cover">
                 </div>
-                
-                <!-- Mittlere Bild-Ebene -->
-                <div class="image-layer middle-layer">
-                    <div class="image-card">
-                        <img src="assets/img/randombebe Kopie.jpg" alt="Magische Kinderportraits" class="image-cover">
+            </div>
+            
+            <!-- Vorderste Bild-Ebene -->
+            <div class="image-layer front-layer">
+                <div class="image-card">
+                    <img src="assets/img/Halid 1.jpg" alt="Fantasiewelt für Kinder" class="image-cover">
+                    
+                    <!-- Badge auf dem Bild -->
+                    <div class="image-badge">Kinderträume</div>
+                    
+                    <!-- Schwebende Elemente -->
+                    <div class="floating-element star-element">
+                        <i class="fas fa-star"></i>
                     </div>
-                </div>
-                
-                <!-- Vorderste Bild-Ebene -->
-                <div class="image-layer front-layer">
-                    <div class="image-card">
-                        <img src="assets/img/Halid 1.jpg" alt="Fantasiewelt für Kinder" class="image-cover">
-                        
-                        <!-- Badge auf dem Bild -->
-                        <div class="image-badge">Kinderträume</div>
-                        
-                        <!-- Schwebende Elemente -->
-                        <div class="floating-element star-element">
-                            <i class="fas fa-star"></i>
-                        </div>
-                        
-                        <div class="floating-element magic-element">
-                            <i class="fas fa-magic"></i>
-                        </div>
+                    
+                    <div class="floating-element magic-element">
+                        <i class="fas fa-magic"></i>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <!-- Scroll-Indikator -->
-        <div class="scroll-indicator">
-            <span>Entdecke mehr</span>
-            <div class="mouse-icon">
-                <div class="mouse-wheel"></div>
-            </div>
+    </div>
+    
+    <!-- Scroll-Indikator -->
+    <div class="scroll-indicator">
+        <span>Entdecke mehr</span>
+        <div class="mouse-icon">
+            <div class="mouse-wheel"></div>
         </div>
-    </section>
+    </div>
     
     <!-- Glowing Circles werden per JavaScript hinzugefügt -->
     <!-- <div class="glow-circle glow-circle-1"></div>
