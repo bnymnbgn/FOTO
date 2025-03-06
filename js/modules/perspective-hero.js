@@ -1,98 +1,125 @@
 /**
- * Erweitertes Perspective Hero Modul mit VANTA.BIRDS
+ * Erweitertes Perspective Hero Modul
  * Professionelle 3D-Effekte und interaktive Elemente für eine immersive Hero-Sektion
  */
 
-// VANTA-Effekt Instanz
-let vantaEffect = null;
-
 /**
- * Initialisiert den VANTA.BIRDS Effekt anstatt der Partikel
+ * Partikel mit unterschiedlichen Größen, Farben und Bewegungen erstellen
  */
-function initVantaBirds() {
-    // Überprüfen, ob die erforderlichen Skripte vorhanden sind
-    if (typeof VANTA === 'undefined' || typeof THREE === 'undefined') {
-        console.warn('VANTA.BIRDS oder THREE.js nicht gefunden. Der Vögel-Effekt kann nicht initialisiert werden.');
+function createEnhancedParticles() {
+    const particlesContainer = document.querySelector('.perspective-hero .particles-container');
+    if (!particlesContainer) {
+        console.warn('Partikel-Container nicht gefunden');
         return;
     }
     
-    // Den Hero-Hintergrund Container finden
-    const heroElement = document.querySelector('.perspective-hero');
-    if (!heroElement) {
-        console.warn('Element .perspective-hero nicht gefunden');
-        return;
-    }
+    // Bestehende Partikel entfernen, falls vorhanden
+    const existingParticles = particlesContainer.querySelectorAll('.particle');
+    existingParticles.forEach(particle => particle.remove());
     
-    // Farbe aus den CSS-Variablen extrahieren
-    const styles = getComputedStyle(document.documentElement);
-    const primaryColor = styles.getPropertyValue('--primary-color').trim();
-    const secondaryColor = styles.getPropertyValue('--secondary-color').trim();
+    // Verschiedene Partikeltypen und Größen definieren
+    const particleTypes = [
+        { 
+            minSize: 2, 
+            maxSize: 5, 
+            count: 20, 
+            opacity: '0.4',
+            color: 'rgba(255, 255, 255, 0.8)',
+            blur: '0px',
+            speed: { min: 15, max: 25 }
+        },
+        { 
+            minSize: 5, 
+            maxSize: 12, 
+            count: 10, 
+            opacity: '0.25',
+            color: 'rgba(255, 255, 255, 0.7)',
+            blur: '1px',
+            speed: { min: 25, max: 35 }
+        },
+        { 
+            minSize: 12, 
+            maxSize: 20, 
+            count: 5, 
+            opacity: '0.15',
+            color: 'rgba(255, 255, 255, 0.6)',
+            blur: '2px',
+            speed: { min: 35, max: 50 }
+        }
+    ];
     
-    // Farben in Hex-Format konvertieren
-    const primaryHex = convertCssColorToHex(primaryColor);
-    const secondaryHex = convertCssColorToHex(secondaryColor);
-    
-    // Bestehende Instanz zerstören, falls vorhanden
-    if (vantaEffect !== null) {
-        vantaEffect.destroy();
-    }
-    
-    // Prüfen, ob reduzierte Bewegung gewünscht ist
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    
-    // VANTA-Effekt initialisieren mit angepassten Parametern
-    vantaEffect = VANTA.BIRDS({
-        el: heroElement,
-        mouseControls: true,
-        touchControls: true,
-        gyroControls: false,
-        minHeight: 200.00,
-        minWidth: 200.00,
-        scale: 1.00,
-        scaleMobile: 1.00,
-        backgroundColor: 0x0, // Transparent für den Hintergrund
-        color1: primaryHex,
-        color2: secondaryHex,
-        colorMode: "lerp",
-        birdSize: 1.30,
-        wingSpan: 20.00,
-        speedLimit: prefersReducedMotion ? 1.00 : 3.00,
-        separation: 99.00,
-        alignment: 82.00,
-        cohesion: 88.00,
-        quantity: prefersReducedMotion ? 1.00 : 3.00,
-        backgroundAlpha: 0.0 // Transparent
+    // Alle Partikeltypen durchlaufen und erstellen
+    particleTypes.forEach(type => {
+        for (let i = 0; i < type.count; i++) {
+            createParticle(
+                particlesContainer,
+                type.minSize,
+                type.maxSize,
+                type.opacity,
+                type.color,
+                type.blur,
+                type.speed
+            );
+        }
     });
-    
-    console.log('VANTA.BIRDS Effekt erfolgreich initialisiert');
 }
 
 /**
- * Hilfsfunktion, um CSS-Farben in Hex-Format zu konvertieren
+ * Einzelnes Partikel mit individueller Animation erstellen
  */
-function convertCssColorToHex(color) {
-    // Temporäres Element erstellen
-    const tempElement = document.createElement('div');
-    tempElement.style.color = color;
-    document.body.appendChild(tempElement);
+function createParticle(container, minSize, maxSize, opacity, color, blur, speed) {
+    // Zufällige Größe innerhalb des angegebenen Bereichs
+    const size = Math.random() * (maxSize - minSize) + minSize;
     
-    // Berechnete Farbe auslesen
-    const computedColor = getComputedStyle(tempElement).color;
-    document.body.removeChild(tempElement);
+    // Zufällige Position
+    const xPos = Math.random() * 100;
+    const yPos = Math.random() * 100;
     
-    // RGB-Werte extrahieren
-    const rgbMatch = computedColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
-    if (rgbMatch) {
-        const r = parseInt(rgbMatch[1]);
-        const g = parseInt(rgbMatch[2]);
-        const b = parseInt(rgbMatch[3]);
-        
-        // Zu Hex konvertieren
-        return (r << 16) + (g << 8) + b;
-    }
+    // Zufällige Bewegungsdistanz
+    const xMovement = Math.random() * 100 + speed.min;
+    const yMovement = Math.random() * 100 + speed.min;
     
-    // Fallback: Ein Standard-Hex zurückgeben
-    return 0x1a1a1a;
+    // Zufällige Animationsdauer (basierend auf Geschwindigkeitsbereich)
+    const animationDuration = (Math.random() * (speed.max - speed.min) + speed.min);
+    
+    // Zufällige Verzögerung für versetzten Start
+    const animationDelay = Math.random() * 5;
+    
+    // Partikel-Element erstellen
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    
+    // Aussehen und Position
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+    particle.style.left = `${xPos}%`;
+    particle.style.top = `${yPos}%`;
+    particle.style.opacity = opacity;
+    particle.style.backgroundColor = color;
+    particle.style.filter = `blur(${blur})`;
+    
+    // Eigene Keyframes für jedes Partikel
+    const uniqueId = Math.floor(Math.random() * 10000);
+    const keyframes = `
+    @keyframes floatParticle${uniqueId} {
+        0% { transform: translate(0, 0); }
+        25% { transform: translate(${xMovement * 0.3}px, ${-yMovement * 0.5}px); }
+        50% { transform: translate(${xMovement * 0.7}px, ${-yMovement * 0.2}px); }
+        75% { transform: translate(${-xMovement * 0.2}px, ${yMovement * 0.4}px); }
+        100% { transform: translate(0, 0); }
+    }`;
+    
+    // Style-Element erstellen und zum Dokument hinzufügen
+    const style = document.createElement('style');
+    style.innerHTML = keyframes;
+    document.head.appendChild(style);
+    
+    // Animation auf das Partikel anwenden
+    particle.style.animation = `floatParticle${uniqueId} ${animationDuration}s ease-in-out infinite`;
+    particle.style.animationDelay = `${animationDelay}s`;
+    
+    // Partikel zum Container hinzufügen
+    container.appendChild(particle);
 }
 
 /**
@@ -489,6 +516,7 @@ function setupScrollParallax() {
     if (!hero) return;
     
     // Die Elemente, die parallax-Effekte erhalten sollen
+    const particles = document.querySelector('.particles-container');
     const scene = document.getElementById('perspectiveScene');
     const glowCircles = document.querySelectorAll('.glow-circle');
     
@@ -501,6 +529,12 @@ function setupScrollParallax() {
         
         // Nur anwenden, wenn im sichtbaren Bereich
         if (scrollProgress <= 1) {
+            // Parallax-Effekt für Partikel
+            if (particles) {
+                particles.style.transform = `translateY(${scrollProgress * 150}px)`;
+                particles.style.opacity = `${1 - scrollProgress * 1.5}`;
+            }
+            
             // Parallax-Effekt für die Szene
             if (scene) {
                 scene.style.transform = `translateY(${scrollProgress * 100}px)`;
@@ -518,40 +552,10 @@ function setupScrollParallax() {
 }
 
 /**
- * Beendet aktive Effekte und räumt auf
- */
-function cleanupVantaEffects() {
-    if (vantaEffect !== null) {
-        vantaEffect.destroy();
-        vantaEffect = null;
-    }
-}
-
-/**
- * Event-Listener für Fenstergröße, um Vanta-Effekt anzupassen
- */
-function setupResizeListener() {
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-        // Debounce für bessere Performance
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            // Bei Größenänderung Vanta neu initialisieren
-            if (vantaEffect !== null) {
-                const oldEffect = vantaEffect;
-                vantaEffect = null;
-                oldEffect.destroy();
-                initVantaBirds();
-            }
-        }, 250);
-    });
-}
-
-/**
  * Exportiert die Funktion zur Initialisierung des Hero-Bereichs
  */
 export function initPerspectiveHero() {
-    console.log('Initialisiere erweiterte 3D-Hero-Sektion mit VANTA.BIRDS...');
+    console.log('Initialisiere erweiterte 3D-Hero-Sektion...');
     
     // Den DOM komplett laden lassen, bevor Effekte initialisiert werden
     if (document.readyState === 'loading') {
@@ -559,9 +563,6 @@ export function initPerspectiveHero() {
     } else {
         initPerspectiveHeroEffects();
     }
-    
-    // Cleanup bei Entladen der Seite
-    window.addEventListener('beforeunload', cleanupVantaEffects);
 }
 
 /**
@@ -582,8 +583,8 @@ function initPerspectiveHeroEffects() {
         console.warn('Element #perspectiveScene nicht gefunden. Mauseffekte werden nicht initialisiert.');
     }
     
-    // VANTA.BIRDS statt Partikel initialisieren
-    initVantaBirds();
+    // Verbesserte Partikel erstellen
+    createEnhancedParticles();
     
     // Glowing Accent Circles einrichten
     setupGlowingAccents();
@@ -593,7 +594,4 @@ function initPerspectiveHeroEffects() {
     
     // Event-Listener für das Scrollen hinzufügen, um Parallax-Effekte zu aktivieren
     setupScrollParallax();
-    
-    // Event-Listener für Fenstergröße einrichten
-    setupResizeListener();
 }
