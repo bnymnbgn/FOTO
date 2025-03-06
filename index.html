@@ -45,77 +45,59 @@
         </div>
     </header>
 
-<!-- Verbesserte Hero Section mit 3D-Perspektive -->
+<!-- Optimierte Perspective-Hero-Sektion mit verbesserter Struktur -->
 <section id="home" class="hero perspective-hero">
-    <!-- Partikel-Container für die schwebenden Elemente -->
-    <div class="particles-container">
-        <!-- Partikel werden dynamisch per JavaScript hinzugefügt -->
-    </div>
+    <!-- Hintergrund-Gradient mit sanften Übergängen -->
+    <div class="hero-background"></div>
     
-    <!-- 3D-Szene mit Mausverfolgung -->
-    <div class="perspective-scene" id="perspectiveScene">
-        <!-- Linke Seite mit Text -->
-        <div class="hero-content" data-depth="80">
-            <div class="hero-badge">
-                <span>Kreative Bildbearbeitung</span>
-            </div>
+    <!-- Hauptcontainer für symmetrisches Layout -->
+    <div class="hero-container">
+        <!-- Textsektion mit verbesserter Lesbarkeit -->
+        <div class="hero-text-section">
+            <div class="hero-badge">NOHA Studio Präsentiert</div>
             
             <h1 class="hero-title">
-                <span class="title-line">Erwecke</span>
-                <span class="title-line accent">
-                    <span class="gradient-text">Magie</span>
-                    <span class="title-underline"></span>
-                </span>
-                <span class="title-line">zum Leben</span>
+                Lebendige <span class="highlight">Magie</span> in jedem Bild
             </h1>
             
             <p class="hero-description">
-                Wir verwandeln gewöhnliche Kinderfotografien in außergewöhnliche Kunstwerke, 
-                die die Fantasie Ihrer Kleinen zum Leben erwecken und unvergessliche Erinnerungen schaffen.
+                Wir erschaffen aus Kinderfotografien kunstvolle Fantasiewelten, 
+                die Erinnerungen bewahren und Emotionen wecken.
             </p>
             
             <div class="hero-buttons">
-                <a href="#gallery" class="hero-btn-primary">
+                <a href="#gallery" class="btn-primary">
                     <span>Galerie entdecken</span>
                     <i class="fas fa-arrow-right"></i>
                 </a>
-                <a href="#contact" class="hero-btn-secondary">Kontakt aufnehmen</a>
+                <a href="#contact" class="btn-secondary">Kontakt aufnehmen</a>
             </div>
-            
         </div>
         
-        <!-- Rechte Seite mit Bildkomposition -->
-        <div class="hero-images" data-depth="60">
-            <!-- Hinterste Bild-Ebene -->
-            <div class="image-layer back-layer">
-                <div class="image-card">
-                    <img src="assets/img/TIGER Kopie2.jpg" alt="Kreatives Kinderfoto" class="image-cover">
+        <!-- Bildsektion mit optimierter Darstellung -->
+        <div class="hero-image-section">
+            <div class="image-stack">
+                <!-- Hinteres Bild -->
+                <div class="image-container back">
+                    <img src="assets/img/TIGER Kopie2.jpg" alt="Kreatives Kinderfoto" class="hero-image">
                 </div>
-            </div>
-            
-            <!-- Mittlere Bild-Ebene -->
-            <div class="image-layer middle-layer">
-                <div class="image-card">
-                    <img src="assets/img/randombebe Kopie.jpg" alt="Magische Kinderportraits" class="image-cover">
+                
+                <!-- Mittleres Bild -->
+                <div class="image-container middle">
+                    <img src="assets/img/randombebe Kopie.jpg" alt="Magische Kinderportraits" class="hero-image">
                 </div>
-            </div>
-            
-            <!-- Vorderste Bild-Ebene -->
-            <div class="image-layer front-layer">
-                <div class="image-card">
-                    <img src="assets/img/Halid 1.jpg" alt="Fantasiewelt für Kinder" class="image-cover">
-                    
-                    <!-- Badge auf dem Bild -->
-                    <div class="image-badge">Kinderträume</div>
-                    
-                    <!-- Schwebende Elemente -->
-                    <div class="floating-element star-element">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    
-                    <div class="floating-element magic-element">
-                        <i class="fas fa-magic"></i>
-                    </div>
+                
+                <!-- Vorderes Bild mit Badge -->
+                <div class="image-container front">
+                    <img src="assets/img/Halid 1.jpg" alt="Fantasiewelt für Kinder" class="hero-image">
+                </div>
+                
+                <!-- Verbesserte Dekorationselemente -->
+                <div class="decoration-element star">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="decoration-element magic">
+                    <i class="fas fa-magic"></i>
                 </div>
             </div>
         </div>
@@ -124,10 +106,11 @@
     <!-- Scroll-Indikator -->
     <div class="scroll-indicator">
         <span>Entdecke mehr</span>
-        <div class="mouse-icon">
-            <div class="mouse-wheel"></div>
+        <div class="scroll-icon">
+            <i class="fas fa-chevron-down"></i>
         </div>
     </div>
+</section>
     
     <!-- Glowing Circles werden per JavaScript hinzugefügt -->
     <!-- <div class="glow-circle glow-circle-1"></div>

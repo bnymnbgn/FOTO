@@ -1,685 +1,640 @@
-/* Verbesserte Perspective Hero Styles */
+/* Verbesserte Perspective-Hero-Sektion mit optimierter Mobile-Ansicht */
+
+/* Grundlegende Einstellungen für die Perspective-Hero-Sektion */
 .perspective-hero {
-    height: 100vh;
-    min-height: 700px;
     position: relative;
-    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+    min-height: 800px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(
-        135deg, 
-        var(--primary-color) 0%, 
-        color-mix(in oklch, var(--primary-color), var(--secondary-color) 50%) 50%, 
-        var(--secondary-color) 100%
-    );
-    margin-top: 0;
+    overflow: hidden;
+    margin: 0;
     padding: 0;
 }
 
-/* Verbesserte Partikel-Container mit Glasmorphismus */
-.particles-container {
+/* Premium-Hintergrund mit optimiertem Farbverlauf */
+.perspective-hero .hero-background {
     position: absolute;
-    width: 100%;
-    height: 100%;
     top: 0;
     left: 0;
-    overflow: hidden;
-    z-index: 1;
-}
-
-.particle {
-    position: absolute;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.5);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-    z-index: 1;
-    backdrop-filter: blur(2px);
-}
-
-/* Verbesserte 3D-Szene mit tieferer Perspektive */
-.perspective-scene {
-    position: relative;
     width: 100%;
     height: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
+    background: linear-gradient(135deg, 
+        var(--primary-color) 0%, 
+        #b36db0 30%,
+        #7e9ed9 70%, 
+        var(--secondary-color) 100%);
+    opacity: 0.9;
+    z-index: 1;
+}
+
+/* Verbesserter Hauptcontainer für symmetrisches Layout */
+.perspective-hero .hero-container {
+    position: relative;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    z-index: 2;
-    transform-style: preserve-3d;
-    perspective: 1200px;
-    transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-@media (min-width: 992px) {
-    .perspective-scene {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        gap: 4rem;
-    }
-}
-
-/* Hero-Content (linke Seite) mit verbesserter Animation */
-.hero-content {
+    justify-content: space-between;
     width: 100%;
-    max-width: 600px;
-    text-align: center;
-    z-index: 10;
-    transform: translateZ(100px);
-    transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-    opacity: 0;
-    animation: contentFadeIn 1s ease-out forwards 0.2s;
+    max-width: 1800px; /* Noch breiter für bessere Bildschirmnutzung */
+    padding: 0 5% 0 8%; /* Asymmetrisches Padding - mehr links */
+    z-index: 2;
+    margin: 0 auto; /* Zentriert den Container */
 }
 
-@keyframes contentFadeIn {
-    0% { opacity: 0; transform: translateZ(100px) translateY(30px); }
-    100% { opacity: 1; transform: translateZ(100px) translateY(0); }
+/* ===== TEXT-BEREICH OPTIMIERT ===== */
+.perspective-hero .hero-text-section {
+    flex: 1.2; /* Mehr Platz für den Textbereich */
+    max-width: 700px; /* Noch breiter für bessere Textdarstellung */
+    margin-right: 120px; /* Viel mehr Abstand zum Bildbereich */
+    padding-left: 1%; /* Zusätzlicher Abstand nach links */
+    z-index: 5;
 }
 
-@media (min-width: 992px) {
-    .hero-content {
-        width: 50%;
-        text-align: left;
-    }
-}
-
-/* Verbesserte Badge oben mit Animation */
-.hero-badge {
+/* Verbessertes Badge mit höherwertiger Optik */
+.perspective-hero .hero-badge {
     display: inline-block;
-    margin-bottom: 1.5rem;
-    transform: translateY(-10px);
-    opacity: 0;
-    animation: badgeFadeIn 0.6s ease-out forwards 0.8s;
-}
-
-@keyframes badgeFadeIn {
-    0% { opacity: 0; transform: translateY(-10px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-
-.hero-badge span {
-    padding: 0.6rem 1.2rem;
-    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-    border-radius: 9999px;
-    font-size: 0.875rem;
+    padding: 14px 28px; /* Größeres Padding für bessere Lesbarkeit */
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(12px);
+    border-radius: 100px;
+    font-size: 18px; /* Größere Schrift */
     font-weight: 600;
     color: white;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    position: relative;
-    overflow: hidden;
-    display: inline-block;
+    margin-bottom: 36px; /* Mehr Abstand zum Titel */
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.hero-badge span:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(
-        90deg, 
-        transparent, 
-        rgba(255, 255, 255, 0.2), 
-        transparent
-    );
-    animation: badgeShine 3s linear infinite;
+.perspective-hero .hero-badge:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
 
-@keyframes badgeShine {
-    0% { left: -100%; }
-    100% { left: 200%; }
-}
-
-/* Verbesserte Überschrift mit Hervorhebungen */
-.hero-title {
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
-    letter-spacing: -0.03em;
+/* Größerer, auffälligerer Titel */
+.perspective-hero .hero-title {
+    font-size: 6.2rem; /* Noch größerer Titel */
+    line-height: 1.1;
     font-weight: 800;
     color: white;
-    margin-bottom: 1.5rem;
-    line-height: 1.1;
-    text-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    margin-bottom: 40px; /* Mehr Abstand zur Beschreibung */
+    text-shadow: 0 6px 15px rgba(0, 0, 0, 0.25); /* Stärkerer Schatten für besseren Kontrast */
+    letter-spacing: -0.02em;
 }
 
-@media (min-width: 768px) {
-    .hero-title {
-        font-size: 4rem;
-    }
+/* Magie animation */
+@keyframes neonGlow {
+    0% { text-shadow: 0 0 10px #7edbff, 0 0 20px #7edbff, 0 0 30px #7edbff; }
+    50% { text-shadow: 0 0 15px #00e5ff, 0 0 30px #00e5ff, 0 0 45px #00e5ff; }
+    100% { text-shadow: 0 0 10px #7edbff, 0 0 20px #7edbff, 0 0 30px #7edbff; }
 }
 
-.title-line {
-    display: block;
-    position: relative;
-    overflow: hidden;
+.perspective-hero .hero-title .highlight {
+    text-shadow: 0 0 10px #7edbff, 0 0 20px #7edbff, 0 0 30px #7edbff;
+    animation: neonGlow 2s infinite alternate ease-in-out;
 }
 
-.title-line.accent {
-    position: relative;
-    display: inline-block;
+/* Größere, besser lesbare Beschreibung */
+.perspective-hero .hero-description {
+    font-size: 1.8rem; /* Noch größere Schrift für bessere Lesbarkeit */
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.95); /* Höherer Kontrast */
+    margin-bottom: 52px; /* Mehr Abstand zu den Buttons */
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    max-width: 650px; /* Breiter für längere Zeilen */
+    font-weight: 500; /* Etwas fetter für bessere Lesbarkeit */
 }
 
-.gradient-text {
-    background: linear-gradient(45deg, #ffb7d5, #79e2ff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    position: relative;
-}
-
-.gradient-text:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 40%;
-    height: 100%;
-    background: linear-gradient(
-        90deg, 
-        transparent, 
-        rgba(255, 255, 255, 0.5), 
-        transparent
-    );
-    animation: textShine 6s linear infinite;
-}
-
-@keyframes textShine {
-    0% { left: -100%; }
-    100% { left: 200%; }
-}
-
-.title-underline {
-    position: absolute;
-    bottom: 5px;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-    border-radius: 5px;
-    transform-origin: left;
-    transform: scaleX(0);
-    animation: extendLine 1.5s cubic-bezier(0.23, 1, 0.32, 1) forwards 0.7s;
-}
-
-@keyframes extendLine {
-    0% { transform: scaleX(0); }
-    100% { transform: scaleX(1); }
-}
-
-/* Verbesserte Beschreibungstext */
-.hero-description {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 1.25rem;
-    margin-bottom: 2.5rem;
-    max-width: 36rem;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.7;
-    opacity: 0;
-    animation: fadeUp 1s ease-out forwards 1s;
-}
-
-@keyframes fadeUp {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-
-@media (min-width: 992px) {
-    .hero-description {
-        margin-left: 0;
-        margin-right: 0;
-    }
-}
-
-/* Verbesserte Button-Container mit Animation */
-.hero-buttons {
+/* Verbesserte Button-Container */
+.perspective-hero .hero-buttons {
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 2.5rem;
+    gap: 24px;
+    margin-top: 15px;
+}
+
+/* Aufgewerteter Primär-Button */
+.perspective-hero .btn-primary {
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
-    opacity: 0;
-    animation: fadeUp 1s ease-out forwards 1.2s;
-}
-
-@media (min-width: 576px) {
-    .hero-buttons {
-        flex-direction: row;
-    }
-}
-
-@media (min-width: 992px) {
-    .hero-buttons {
-        justify-content: flex-start;
-    }
-}
-
-/* Verbesserte Primärer Button mit Gradient und Animation */
-.hero-btn-primary {
-    padding: 0.9rem 1.8rem;
-    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    border-radius: 9999px;
+    gap: 14px;
+    padding: 20px 42px; /* Noch größeres Padding für bessere Klickbarkeit */
+    background: white;
+    color: var(--primary-color);
+    font-size: 1.35rem; /* Größere Schrift */
     font-weight: 700;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-    position: relative;
-    overflow: hidden;
+    border-radius: 100px;
+    text-decoration: none;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
     border: none;
-    transform: translateY(0);
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-                box-shadow 0.3s ease;
-    z-index: 1;
 }
 
-.hero-btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+.perspective-hero .btn-primary:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.18);
+    background-color: #f8f8f8; /* Subtile Farbänderung beim Hover */
 }
 
-.hero-btn-primary::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(45deg, 
-        color-mix(in srgb, var(--primary-color) 85%, white), 
-        color-mix(in srgb, var(--secondary-color) 85%, white));
-    opacity: 0;
-    transition: opacity 0.3s;
-    z-index: -1;
+.perspective-hero .btn-primary i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
 }
 
-.hero-btn-primary:hover::before {
-    opacity: 1;
+.perspective-hero .btn-primary:hover i {
+    transform: translateX(8px);
 }
 
-.hero-btn-primary::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(
-        90deg, 
-        transparent, 
-        rgba(255, 255, 255, 0.3), 
-        transparent
-    );
-    animation: btnShine 3s linear infinite;
-}
-
-@keyframes btnShine {
-    0% { left: -100%; }
-    100% { left: 200%; }
-}
-
-.hero-btn-primary span, 
-.hero-btn-primary i {
-    position: relative;
-    z-index: 1;
-}
-
-.hero-btn-primary i {
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.hero-btn-primary:hover i {
-    transform: translateX(5px);
-}
-
-/* Sekundärer Button (Outline) mit verbesserten Effekten */
-.hero-btn-secondary {
-    padding: 0.9rem 1.8rem;
-    background-color: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    color: white;
-    border-radius: 9999px;
-    font-weight: 700;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.3s, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-                box-shadow 0.3s ease;
-    transform: translateY(0);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.hero-btn-secondary:hover {
-    border-color: rgba(255, 255, 255, 0.9);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-}
-
-.hero-btn-secondary::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-color: rgba(255, 255, 255, 0.1);
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.hero-btn-secondary:hover::before {
-    opacity: 1;
-}
-
-/* Verbesserte Bewertungs-Badge mit Glasmorphismus */
-.rating-badge {
+/* Verbesserter Sekundär-Button */
+.perspective-hero .btn-secondary {
     display: inline-flex;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    padding: 0.85rem 1.2rem;
-    border-radius: 0.9rem;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    animation: fadeUp 1s ease-out forwards 1.4s;
-    opacity: 0;
-    transform: translateY(0);
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.rating-badge:hover {
-    transform: translateY(-3px);
-}
-
-.rating-stars {
-    display: flex;
-    color: #FFD166;
-    margin-right: 0.75rem;
-    font-size: 1.1rem;
-}
-
-.rating-stars i {
-    margin-right: 2px;
-    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
-}
-
-.rating-badge span {
+    justify-content: center;
+    padding: 20px 42px; /* Größeres Padding */
+    background: transparent;
     color: white;
-    font-weight: 500;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1.35rem; /* Größere Schrift */
+    font-weight: 700;
+    border-radius: 100px;
+    text-decoration: none;
+    border: 2px solid rgba(255, 255, 255, 0.8); /* Deutlichere Grenze */
+    transition: background 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
 }
 
-/* Verbesserte Hero-Images (Rechte Seite) */
-.hero-images {
+.perspective-hero .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-7px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-color: rgba(255, 255, 255, 1); /* Vollständig opaker Rand beim Hover */
+}
+
+/* ===== BILD-BEREICH OPTIMIERT ===== */
+.perspective-hero .hero-image-section {
+    flex: 1;
     position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+}
+
+/* Verbesserter Bild-Stack mit tieferem 3D-Look */
+.perspective-hero .image-stack {
+    position: relative;
+    height: 620px; /* Größere Höhe für bessere Sichtbarkeit */
     width: 100%;
-    max-width: 450px;
-    height: 500px;
-    margin-top: 3rem;
-    transform-style: preserve-3d;
-    opacity: 0;
-    animation: imagesAppear 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards 0.5s;
+    max-width: 520px; /* Breiter für bessere Präsentation */
+    perspective: 1200px; /* Stärkere Perspektive */
 }
 
-@keyframes imagesAppear {
-    0% { 
-        opacity: 0; 
-        transform: translateZ(0) scale(0.9); 
-    }
-    100% { 
-        opacity: 1; 
-        transform: translateZ(0) scale(1); 
-    }
-}
-
-@media (min-width: 992px) {
-    .hero-images {
-        width: 50%;
-        margin-top: 0;
-    }
-}
-
-/* Bild-Ebenen mit verbesserten Effekten */
-.image-layer {
+/* Optimierte Bild-Container */
+.perspective-hero .image-container {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.back-layer {
-    transform: translate3d(-65%, -50%, -80px) rotateY(-18deg);
-    filter: brightness(0.7) contrast(1.1) blur(1px);
-    z-index: 1;
-}
-
-.middle-layer {
-    transform: translate3d(-50%, -50%, 0);
-    filter: brightness(0.9) contrast(1.1);
-    z-index: 2;
-}
-
-.front-layer {
-    transform: translate3d(-35%, -50%, 80px) rotateY(18deg);
-    filter: contrast(1.1) brightness(1.05);
-    z-index: 3;
-}
-
-/* Verbesserte Bild-Karten mit Glasmorphismus */
-.image-card {
-    width: 18rem;
-    height: 24rem;
-    border-radius: 1.2rem;
     overflow: hidden;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
-    background-color: rgba(0, 0, 0, 0.5);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    position: relative;
-    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1),
-                box-shadow 0.5s ease;
+    border-radius: 24px; /* Größerer Radius für moderneres Aussehen */
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25); /* Stärkerer Schatten */
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); /* Verbesserte Animation */
+    border: 5px solid white; /* Dickerer Rahmen */
 }
 
-.front-layer .image-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.45);
+/* Verbesserte individuelle Bild-Positionierung - weiter nach rechts gerückt */
+.perspective-hero .image-container.back {
+    width: 88%;
+    height: 88%;
+    top: 0;
+    right: -5%; /* Weiter nach rechts gerückt */
+    z-index: 1;
+    transform: rotate(8deg) translateZ(-80px); /* Stärkere Rotation und Tiefe */
 }
 
-.image-cover {
+.perspective-hero .image-container.middle {
+    width: 88%;
+    height: 88%;
+    bottom: 0;
+    right: 30%; /* Weiter nach rechts gerückt */
+    z-index: 2;
+    transform: rotate(-4deg) translateZ(0);
+}
+
+.perspective-hero .image-container.front {
+    width: 92%;
+    height: 92%;
+    top: 12%;
+    left: 5%; /* Weiter nach rechts gerückt */
+    z-index: 3;
+    transform: rotate(-10deg) translateZ(80px); /* Stärkere Rotation und Tiefe */
+}
+
+/* Verbesserte Hover-Effekte für Bilder */
+.perspective-hero .image-container:hover {
+    transform: scale(1.08) rotate(0deg) translateZ(90px);
+    z-index: 10;
+}
+
+/* Optimiertes Bild-Styling */
+.perspective-hero .hero-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 8s ease;
+    transition: transform 5s cubic-bezier(0.215, 0.610, 0.355, 1); /* Sanftere Transition */
 }
 
-.image-card:hover .image-cover {
-    transform: scale(1.1);
+.perspective-hero .image-container:hover .hero-image {
+    transform: scale(1.12);
 }
 
-/* Badges auf den Bildern mit verbesserten Designelementen */
-.image-badge {
+/* Optimierte Dekorations-Elemente */
+.perspective-hero .decoration-element {
     position: absolute;
-    bottom: 1.5rem;
-    left: 1.5rem;
-    background-color: white;
-    color: var(--primary-color);
-    padding: 0.6rem 1.2rem;
-    border-radius: 9999px;
-    font-weight: 700;
-    font-size: 0.95rem;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
-    transform: rotate(-5deg) translateZ(5px) scale(1);
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.image-card:hover .image-badge {
-    transform: rotate(-5deg) translateZ(5px) scale(1.1);
-}
-
-/* Verbesserte Schwebende Elemente */
-.floating-element {
-    position: absolute;
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 70px; /* Größer für bessere Sichtbarkeit */
+    height: 70px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     color: white;
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    cursor: pointer;
-}
-
-.floating-element:hover {
-    transform: scale(1.15) translateZ(100px) !important;
-}
-
-.star-element {
-    top: -1.5rem;
-    right: -1.5rem;
-    background: linear-gradient(45deg, #FFD166, #FF9F66);
-    transform: translateZ(100px);
+    font-size: 28px; /* Größer für bessere Sichtbarkeit */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    z-index: 5;
     animation: float 6s ease-in-out infinite;
 }
 
-.magic-element {
-    bottom: -1rem;
-    left: -1.5rem;
-    background: linear-gradient(45deg, var(--secondary-color), #a358ff);
-    transform: translateZ(120px);
-    animation: float 7s ease-in-out 1s infinite;
+.perspective-hero .decoration-element.star {
+    background: linear-gradient(135deg, #FFD166, #F66D44);
+    top: -25px;
+    right: 50px;
 }
 
-.floating-element i {
-    font-size: 1.5rem;
-    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
+.perspective-hero .decoration-element.magic {
+    background: linear-gradient(135deg, var(--secondary-color), #a358ff);
+    bottom: 50px;
+    left: -25px;
+    animation-delay: 2s;
 }
 
-/* Scroll-Indikator mit Animationseffekten */
-.scroll-indicator {
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-25px) rotate(5deg); }
+}
+
+/* ===== SCROLL-INDIKATOR OPTIMIERT ===== */
+.perspective-hero .scroll-indicator {
     position: absolute;
-    bottom: 2rem;
+    bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
-    color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
-    animation: fadeIn 1s ease-out forwards 1.8s;
-    opacity: 0;
-    z-index: 5;
+    color: white;
     cursor: pointer;
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10;
+    transition: transform 0.3s ease;
 }
 
-.scroll-indicator:hover {
-    transform: translateX(-50%) translateY(-5px);
+.perspective-hero .scroll-indicator:hover {
+    transform: translate(-50%, -8px);
 }
 
-.scroll-indicator span {
-    font-size: 0.95rem;
-    margin-bottom: 0.8rem;
-    opacity: 0.85;
+.perspective-hero .scroll-indicator span {
+    font-size: 1.1rem; /* Größere Schrift */
     font-weight: 500;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 12px;
+    opacity: 0.9;
 }
 
-.mouse-icon {
-    width: 2.2rem;
-    height: 3.5rem;
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 9999px;
+.perspective-hero .scroll-icon {
+    width: 48px; /* Größer für bessere Sichtbarkeit */
+    height: 48px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(12px);
+    border-radius: 50%;
     display: flex;
+    align-items: center;
     justify-content: center;
-    position: relative;
+    animation: bounce 2s infinite;
+    border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
-.mouse-wheel {
-    width: 0.5rem;
-    height: 0.9rem;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 9999px;
-    margin-top: 0.6rem;
-    animation: mouseScroll 2s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-15px); }
+    60% { transform: translateY(-8px); }
 }
 
-/* Verbesserte Animationen */
-@keyframes float {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(5deg); }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes mouseScroll {
-    0% { opacity: 1; transform: translateY(0); }
-    50% { opacity: 0; transform: translateY(12px); }
-    51% { opacity: 0; transform: translateY(0); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-
-/* Media Queries für verbesserte Responsivität */
-@media (max-width: 767px) {
-    .hero-title {
-        font-size: clamp(2.2rem, 8vw, 3rem);
+/* ===== VERBESSERTE RESPONSIVE DESIGN ANPASSUNGEN ===== */
+/* Für größere Displays */
+@media (min-width: 1600px) {
+    .perspective-hero .hero-title {
+        font-size: 6rem;
     }
     
-    .hero-description {
+    .perspective-hero .hero-description {
+        font-size: 1.75rem;
+    }
+    
+    .perspective-hero .image-stack {
+        height: 700px;
+        max-width: 600px;
+    }
+}
+
+/* Für mittlere Displays */
+@media (max-width: 1200px) {
+    .perspective-hero .hero-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 0 8%;
+    }
+    
+    .perspective-hero .hero-text-section {
+        margin-right: 0;
+        margin-bottom: 60px;
+        padding-left: 0; /* Zurücksetzen des linken Paddings auf Mobilgeräten */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .perspective-hero .hero-description {
+        max-width: 700px;
+    }
+    
+    .perspective-hero .hero-image-section {
+        width: 100%;
+        max-width: 580px;
+    }
+    
+    .perspective-hero .hero-title {
+        font-size: 5rem; /* Etwas kleiner auf Tablets */
+    }
+    
+    /* Container-Abstand anpassen */
+    .perspective-hero {
+        padding-top: 80px;
+    }
+}
+
+/* Für Tablets */
+@media (max-width: 992px) {
+    .perspective-hero {
+        min-height: 900px; /* Mehr Platz für gestapelte Elemente */
+        padding-top: 100px;
+        justify-content: flex-start;
+    }
+    
+    .perspective-hero .hero-title {
+        font-size: 4.5rem;
+        margin-bottom: 30px;
+    }
+    
+    .perspective-hero .hero-description {
+        font-size: 1.4rem;
+        margin-bottom: 40px;
+    }
+    
+    .perspective-hero .image-stack {
+        height: 520px;
+        margin-top: 40px;
+    }
+    
+    /* Verbessertes Scrolling auf Tablets */
+    .perspective-hero .scroll-indicator {
+        bottom: 30px;
+    }
+}
+
+/* Für Smartphones - Landscape */
+@media (max-width: 767px) {
+    .perspective-hero {
+        min-height: 900px;
+        height: auto; /* Auto-Höhe für flexiblere Anpassung */
+        padding: 120px 0 80px; /* Mehr Platz oben und unten */
+    }
+    
+    .perspective-hero .hero-container {
+        padding: 0 20px; /* Kleineres seitliches Padding */
+    }
+    
+    .perspective-hero .hero-title {
+        font-size: 3.8rem;
+        margin-bottom: 30px;
+        /* Wichtig: Sicherstellung des Textwrappings */
+        word-wrap: break-word;
+        hyphens: auto;
+    }
+    
+    .perspective-hero .hero-description {
+        font-size: 1.25rem;
+        margin-bottom: 40px;
+        padding: 0 10px; /* Etwas Platz an den Seiten */
+    }
+    
+    .perspective-hero .hero-badge {
+        font-size: 16px;
+        padding: 12px 24px;
+    }
+    
+    .perspective-hero .btn-primary, 
+    .perspective-hero .btn-secondary {
+        padding: 16px 32px;
         font-size: 1.1rem;
     }
     
-    .image-card {
-        width: 16rem;
-        height: 22rem;
+    .perspective-hero .image-stack {
+        height: 380px;
+        max-width: 90%;
+        margin: 20px auto 60px;
+    }
+    
+    /* Dekorationen für Mobile anpassen */
+    .perspective-hero .decoration-element {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+    
+    /* Bildpositionierung verbessern */
+    .perspective-hero .image-container.back,
+    .perspective-hero .image-container.middle,
+    .perspective-hero .image-container.front {
+        position: absolute;
+    }
+    
+    .perspective-hero .image-container.back {
+        top: 0;
+        right: 0;
+        width: 80%;
+        height: 80%;
+    }
+    
+    .perspective-hero .image-container.middle {
+        bottom: 10%;
+        right: 10%;
+        width: 80%;
+        height: 80%;
+    }
+    
+    .perspective-hero .image-container.front {
+        top: 15%;
+        left: 0;
+        width: 85%;
+        height: 85%;
     }
 }
 
-/* Glowing accent circles */
-.glow-circle {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(60px);
-    z-index: 0;
-    opacity: 0.5;
-}
-
-.glow-circle-1 {
-    width: 300px;
-    height: 300px;
-    background-color: var(--primary-color);
-    top: 10%;
-    left: 5%;
-    animation: glowPulse 8s ease-in-out infinite alternate;
-}
-
-.glow-circle-2 {
-    width: 250px;
-    height: 250px;
-    background-color: var(--secondary-color);
-    bottom: 5%;
-    right: 10%;
-    animation: glowPulse 6s ease-in-out infinite alternate 1s;
-}
-
-.glow-circle-3 {
-    width: 200px;
-    height: 200px;
-    background-color: var(--accent-color);
-    top: 30%;
-    right: 20%;
-    animation: glowPulse 10s ease-in-out infinite alternate 2s;
-}
-
-@keyframes glowPulse {
-    0% {
-        opacity: 0.4;
-        transform: scale(1);
+/* Für Smartphones - Portrait - STARK VERBESSERT */
+@media (max-width: 480px) {
+    .perspective-hero {
+        min-height: 800px;
+        height: auto;
+        padding: 100px 0 60px;
+        overflow: visible; /* Wichtig: Overflow entfernen, damit Bilder sichtbar sind */
     }
-    100% {
-        opacity: 0.6;
-        transform: scale(1.3);
+    
+    .perspective-hero .hero-container {
+        padding: 0 15px;
+        width: 100%;
+    }
+    
+    .perspective-hero .hero-text-section {
+        padding: 0 10px;
+        margin-bottom: 30px;
+        max-width: 100%; /* Volle Breite ausnutzen */
+    }
+    
+    .perspective-hero .hero-title {
+        font-size: 2.8rem; /* Kleinere Schrift für bessere Lesbarkeit */
+        line-height: 1.2;
+        margin-bottom: 20px;
+        width: 100%; /* Volle Breite */
+        word-break: keep-all; /* Vermeidet unerwünschte Worttrennungen */
+    }
+    
+    /* Sicherstellen, dass "Magie" sichtbar ist */
+    .perspective-hero .hero-title .highlight {
+        display: inline-block; /* Wichtig für die korrekte Darstellung */
+        text-shadow: 0 0 5px #7edbff, 0 0 10px #7edbff;
+    }
+    
+    .perspective-hero .hero-description {
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 30px;
+        padding: 0 5px;
+        max-width: 100%;
+    }
+    
+    .perspective-hero .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 280px;
+        gap: 15px;
+    }
+    
+    .perspective-hero .btn-primary, 
+    .perspective-hero .btn-secondary {
+        width: 100%;
+        padding: 14px 24px;
+        font-size: 1rem;
+    }
+    
+    /* Verbesserte Bildanzeige für Mobilgeräte */
+    .perspective-hero .hero-image-section {
+        max-width: 100%;
+        height: 360px; /* Feste Höhe für konsistente Darstellung */
+    }
+    
+    .perspective-hero .image-stack {
+        height: 340px;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        perspective: 800px;
+    }
+    
+    /* Neuausrichtung der Bilder für bessere Sichtbarkeit */
+    .perspective-hero .image-container {
+        border-width: 3px; /* Dünnerer Rahmen */
+    }
+    
+    .perspective-hero .image-container.back {
+        width: 75%;
+        height: 75%;
+        top: 5%;
+        right: 5%;
+        transform: rotate(5deg) translateZ(-40px);
+    }
+    
+    .perspective-hero .image-container.middle {
+        width: 75%;
+        height: 75%;
+        bottom: 15%;
+        right: 15%;
+        transform: rotate(-3deg) translateZ(0);
+    }
+    
+    .perspective-hero .image-container.front {
+        width: 80%;
+        height: 80%;
+        top: 10%;
+        left: 5%;
+        transform: rotate(-6deg) translateZ(40px);
+    }
+    
+    /* Dekorationselemente anpassen */
+    .perspective-hero .decoration-element {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    .perspective-hero .decoration-element.star {
+        top: -15px;
+        right: 30px;
+    }
+    
+    .perspective-hero .decoration-element.magic {
+        bottom: 30px;
+        left: -10px;
+    }
+    
+    /* Scroll-Indikator für kleine Bildschirme anpassen */
+    .perspective-hero .scroll-indicator {
+        bottom: 20px;
+    }
+    
+    .perspective-hero .scroll-indicator span {
+        font-size: 0.9rem;
+    }
+    
+    .perspective-hero .scroll-icon {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Extra kleine Smartphones */
+@media (max-width: 360px) {
+    .perspective-hero .hero-title {
+        font-size: 2.5rem; /* Noch kleinere Schrift */
+    }
+    
+    .perspective-hero .image-stack {
+        height: 300px;
+    }
+    
+    .perspective-hero .hero-buttons {
+        max-width: 250px;
+    }
+    
+    .perspective-hero .btn-primary, 
+    .perspective-hero .btn-secondary {
+        padding: 12px 20px;
+        font-size: 0.9rem;
     }
 }
