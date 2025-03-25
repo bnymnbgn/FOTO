@@ -10,6 +10,7 @@ import { initFormValidation } from './modules/form.js';
 import { initFloatingElements } from './modules/floating.js';
 import { enhanceAccessibility } from './utils/accessibility.js';
 import { initPerspectiveHero } from './modules/perspective-hero.js';
+import { initTransformation } from './modules/transformation.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM fully loaded, initializing modules...');
@@ -26,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initFloatingElements();
     enhanceAccessibility();
     initPerspectiveHero();
+    initTransformation();
 
     console.log('All modules initialized successfully');
 });

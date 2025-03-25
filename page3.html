@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traumhafte Baby-Transformation</title>
+    
+    <!-- GSAP Animation Suite -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/CustomEase.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.155.0/three.min.js"></script>
+    
+    <!-- Premium Webfonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome für Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Eigene CSS-Datei einbinden, falls benötigt -->
+    <link rel="stylesheet" href="css/transformation.css">
+    
+    <style>
+        :root {
+            --primary-color: #ff85a2;
+            --secondary-color: #64c4ed;
+            --accent-color: #ffd166;
+            --light-accent: #f8e9f0;
+            --dark-bg: #1a1a2e;
+            --light-bg: #f9f9f9;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --border-radius: 20px;
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-strong: 0 15px 40px rgba(0, 0, 0, 0.2);
+            --transition-fast: 0.3s ease;
+            --transition-medium: 0.5s ease;
+            --transition-slow: 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--light-bg);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            perspective: 1000px;
+        }
+        
+        /* Header */
+        header {
+            background: var(--primary-color);
+            padding: 20px 0;
+            color: var(--text-light);
+            position: relative;
+            z-index: 100;
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-weight: 800;
+            font-size: 24px;
+            background: linear-gradient(45deg, #ffffff, #e3f2fd);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition-fast);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Main Container */
+        .main-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(170.96deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        }
+        
+        /* Content Wrapper */
+        .content-wrapper {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            gap: 50px;
+            margin: 0 auto;
+            align-items: flex-start;
+        }
+        
+        /* Background Effects */
+        .bg-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+            opacity: 0;
+            transition: opacity 1s ease;
+            z-index: -2;
+        }
+        
+        .particles-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        
+        /* Transformation Container - BILD LINKS */
+        .transform-container-wrapper {
+            flex: 0 0 auto;
+            width: 100%;
+            max-width: 500px;
+        }
+        
+        .transform-container {
+            width: 100%;
+            aspect-ratio: 3/4;
+            position: relative;
+            transform-style: preserve-3d;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-strong);
+            overflow: hidden;
+            background-color: white;
+        }
+        
+        /* Optimierter Bildschichten-Stil für sequentielle Transformationen */
+        .image-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            backface-visibility: hidden;
+            transform-style: preserve-3d;
+            will-change: transform, opacity;
+            background-size: cover;
+            background-position: center;
+            transform: translateZ(0);
+            mix-blend-mode: normal;
+            transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1),
+                        opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        /* Ebene 1 ist immer sichtbar als Basis */
+        #layer1 {
+            opacity: 1;
+            z-index: 1;
+        }
+        
+        /* Z-Index-Stapelung für sequentielle Ebenen */
+        #layer2 { z-index: 2; }
+        #layer3 { z-index: 3; }
+        #layer4 { z-index: 4; }
+        #layer5 { z-index: 5; }
+        #layer6 { z-index: 6; }
+        #layer7 { z-index: 7; }
+        
+        /* Größenanpassung der Bilder für optimale Darstellung */
+        .image-layer img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        /* Verbesserung der Ebenenblendung */
+        .image-layer.active {
+            opacity: 0.9;
+            transform: scale(1) translateZ(0);
+        }
+        
+        /* Elements Container */
+        .elements-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            transform-style: preserve-3d;
+            z-index: 10;
+        }
+        
+        /* Individual Elements */
+        .element {
+            position: absolute;
+            transform-origin: center;
+            opacity: 0;
+            will-change: transform, opacity;
+            transform-style: preserve-3d;
+        }
+        
+        .cloud {
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
+        }
+        
+        .animal {
+            filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
+        }
+        
+        .balloon {
+            filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.2));
+        }
+        
+        /* Animation Cube */
+        .cube-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            perspective: 1000px;
+            z-index: 5;
+            pointer-events: none;
+        }
+        
+        .cube {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transform: translateZ(-300px);
+        }
+        
+        .cube-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backface-visibility: hidden;
+        }
+        
+        .front { transform: translateZ(300px); }
+        .back { transform: rotateY(180deg) translateZ(300px); }
+        .right { transform: rotateY(90deg) translateZ(300px); }
+        .left { transform: rotateY(-90deg) translateZ(300px); }
+        .top { transform: rotateX(90deg) translateZ(300px); }
+        .bottom { transform: rotateX(-90deg) translateZ(300px); }
+        
+        /* CONTROLS CONTAINER - RECHTS */
+        .controls-container {
+            flex: 1;
+            max-width: 450px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding-top: 20px;
+            color: white;
+        }
+        
+        /* Stage Info */
+        .stage-info-container {
+            width: 100%;
+            margin-bottom: 25px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 0;
+        }
+        
+        .stage-info {
+            display: none;
+        }
+        
+        .stage-info.active {
+            display: block;
+        }
+        
+        .stage-info h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            color: white;
+        }
+        
+        .stage-info p {
+            margin: 0;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        /* Progress Bar */
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            width: 0;
+            background: white;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+        
+        /* Controls */
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            width: 100%;
+            justify-content: space-between;
+        }
+        
+        .control-btn {
+            background: rgba(255, 255, 255, 0.7);
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            color: var(--primary-color);
+        }
+        
+        .control-btn:hover {
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .control-btn.active {
+            background: white;
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Navigation Hint */
+        .navigation-hint {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+        
+        .navigation-hint i {
+            font-size: 1.2rem;
+        }
+        
+        /* Media Queries */
+        @media (max-width: 992px) {
+            .content-wrapper {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+            
+            .controls-container {
+                max-width: 500px;
+                width: 100%;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .stage-info p {
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 15px;
+            }
+            
+            .transform-container-wrapper {
+                max-width: 400px;
+            }
+            
+            .control-btn {
+                width: 25px;
+                height: 25px;
+                font-size: 12px;
+            }
+            
+            .stage-info h3 {
+                font-size: 1.1rem;
+            }
+            
+            .stage-info p {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .transform-container-wrapper {
+                max-width: 320px;
+            }
+            
+            .control-btn {
+                width: 22px;
+                height: 22px;
+                font-size: 11px;
+            }
+            
+            .stage-info h3 {
+                font-size: 1rem;
+            }
+            
+            .stage-info p {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">BABY DREAMS</div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">Über uns</a></li>
+                    <li><a href="#">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="main-container">
+        <!-- Background effects -->
+        <div class="bg-gradient" id="bgGradient"></div>
+        <div class="particles-container" id="particlesContainer"></div>
+        
+        <!-- Flexbox Wrapper für Bild und Steuerelemente -->
+        <div class="content-wrapper">
+            <!-- Bild-Container links -->
+            <div class="transform-container-wrapper">
+                <!-- Main transformation container -->
+                <div class="transform-container" id="transformContainer">
+                    <!-- 3D cube for transitions -->
+                    <div class="cube-container">
+                        <div class="cube" id="animationCube">
+                            <div class="cube-face front"></div>
+                            <div class="cube-face back"></div>
+                            <div class="cube-face right"></div>
+                            <div class="cube-face left"></div>
+                            <div class="cube-face top"></div>
+                            <div class="cube-face bottom"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Image layers -->
+                    <div class="image-layer" id="layer1">
+                        <img src="assets/transforms/1.png" alt="Baby im Strampler">
+                    </div>
+                    
+                    <div class="image-layer" id="layer2">
+                        <img src="assets/transforms/2.png" alt="Baby Silhouette mit Wolken">
+                    </div>
+                    
+                    <div class="image-layer" id="layer3">
+                        <img src="assets/transforms/3.png" alt="Baby Silhouette mit Beinen">
+                    </div>
+                    
+                    <div class="image-layer" id="layer4">
+                        <img src="assets/transforms/4.png" alt="Baby Hand mit Ballons">
+                    </div>
+                    
+                    <div class="image-layer" id="layer5">
+                        <img src="assets/transforms/5.png" alt="Koala mit Ball">
+                    </div>
+                    
+                    <div class="image-layer" id="layer6">
+                        <img src="assets/transforms/6.png" alt="Baby als Astronaut">
+                    </div>
+                    
+                    <div class="image-layer" id="layer7">
+                        <img src="assets/transforms/7.png" alt="Baby in Fantasiewelt">
+                    </div>
+                    
+                    <!-- Elements container for individual animations -->
+                    <div class="elements-container" id="elementsContainer">
+                        <!-- Clouds will be added via JavaScript -->
+                        <!-- Animals will be added via JavaScript -->
+                        <!-- Balloons will be added via JavaScript -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Steuerelemente rechts -->
+            <div class="controls-container">
+                <!-- Stage Info Box -->
+                <div class="stage-info-container">
+                    <div class="stage-info active" data-stage="1">
+                        <h3>Das Original</h3>
+                        <p>Wir beginnen mit Ihrem Originalfoto. Auch wenn es bereits schön ist, sehen Sie, wie wir es Schritt für Schritt in etwas Magisches verwandeln.</p>
+                    </div>
+                    <div class="stage-info" data-stage="2">
+                        <h3>Grundformen & Silhouette</h3>
+                        <p>Zuerst analysieren wir das Bild und arbeiten die Grundformen und Silhouette heraus. Dies bildet die Basis für die kreative Umgestaltung.</p>
+                    </div>
+                    <div class="stage-info" data-stage="3">
+                        <h3>Neue Umgebung</h3>
+                        <p>Als nächstes erschaffen wir eine völlig neue Umgebung, die den emotionalen Charakter Ihres Kindes widerspiegelt.</p>
+                    </div>
+                    <div class="stage-info" data-stage="4">
+                        <h3>Magische Elemente</h3>
+                        <p>Hier fügen wir fantasievolle Elemente hinzu, die der Szene Leben und Magie einhauchen – von schwebenden Ballons bis hin zu fantastischen Kreaturen.</p>
+                    </div>
+                    <div class="stage-info" data-stage="5">
+                        <h3>Lichtstimmung & Atmosphäre</h3>
+                        <p>Die richtige Lichtstimmung verleiht dem Bild Tiefe und Atmosphäre. Wir arbeiten mit Licht- und Schatteneffekten, um die Magie zu verstärken.</p>
+                    </div>
+                    <div class="stage-info" data-stage="6">
+                        <h3>Feinschliff & Details</h3>
+                        <p>In diesem Schritt fügen wir feine Details und Texturen hinzu, die dem Bild Charakter und Tiefe verleihen und es noch lebendiger wirken lassen.</p>
+                    </div>
+                    <div class="stage-info" data-stage="7">
+                        <h3>Fertiges Kunstwerk</h3>
+                        <p>Voilà! Das fertige Kunstwerk ist bereit. Aus einem alltäglichen Foto ist eine magische Traumwelt geworden, die Ihr Kind verzaubern wird.</p>
+                    </div>
+                </div>
+                
+                <!-- Progress bar -->
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                
+                <!-- Controls -->
+                <div class="controls">
+                    <button class="control-btn active" data-stage="1">1</button>
+                    <button class="control-btn" data-stage="2">2</button>
+                    <button class="control-btn" data-stage="3">3</button>
+                    <button class="control-btn" data-stage="4">4</button>
+                    <button class="control-btn" data-stage="5">5</button>
+                    <button class="control-btn" data-stage="6">6</button>
+                    <button class="control-btn" data-stage="7">7</button>
+                </div>
+                
+                <!-- Navigation-Hinweis -->
+                <div class="navigation-hint">
+                    <i class="fas fa-arrows-left-right"></i>
+                    <span>Nutzen Sie die Pfeiltasten oder die Buttons, um zwischen den Stufen zu wechseln</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Register GSAP plugins
+            gsap.registerPlugin(ScrollTrigger, CustomEase, MotionPathPlugin);
+            
+            // Create custom ease curves for more organic animations
+            CustomEase.create("elasticOut", "0.64, 0.57, 0.67, 1.53");
+            CustomEase.create("softBack", "0.25, 1.5, 0.35, 1");
+            
+            // Elements
+            const transformContainer = document.getElementById('transformContainer');
+            const layers = document.querySelectorAll('.image-layer');
+            const elementsContainer = document.getElementById('elementsContainer');
+            const stageLabel = document.getElementById('stageLabel');
+            const progressFill = document.getElementById('progressFill');
+            const bgGradient = document.getElementById('bgGradient');
+            const animationCube = document.getElementById('animationCube');
+            const controlButtons = document.querySelectorAll('.control-btn');
+            
+            // Stage labels
+            const stageLabels = [
+                "Baby",
+                "Silhouette",
+                "Form",
+                "Ballons",
+                "Koala",
+                "Astronaut",
+                "Traumwelt"
+            ];
+            
+            // Background colors for each stage
+            const bgColors = [
+                "linear-gradient(120deg, #ffffff 0%, #f8f9fa 100%)",
+                "linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%)",
+                "linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%)",
+                "linear-gradient(120deg, #f6d365 0%, #fda085 100%)",
+                "linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%)",
+                "linear-gradient(120deg, #6a11cb 0%, #2575fc 100%)",
+                "linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%)"
+            ];
+            
+            // Current stage
+            let currentStage = 1;
+            let isAnimating = false;
+            
+            // Initialize the scene
+            initScene();
+            
+            // Create particles for ambient background
+            createParticles();
+            
+            // Show first stage immediately
+            showStage(1, true);
+            
+            // Event listeners for control buttons
+            controlButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const stage = parseInt(this.getAttribute('data-stage'));
+                    if (stage !== currentStage && !isAnimating) {
+                        showStage(stage);
+                    }
+                });
+            });
+            
+            // Initialize the scene
+            function initScene() {
+                // Hide all layers initially
+                layers.forEach(layer => {
+                    gsap.set(layer, { opacity: 0 });
+                });
+                
+            }
+            
+            // Create background particles
+            function createParticles() {
+                const particlesContainer = document.getElementById('particlesContainer');
+                
+                for (let i = 0; i < 50; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+                    
+                    const size = 2 + Math.random() * 5;
+                    const posX = Math.random() * 100;
+                    const posY = Math.random() * 100;
+                    
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    particle.style.left = `${posX}%`;
+                    particle.style.top = `${posY}%`;
+                    particle.style.opacity = 0.3 + Math.random() * 0.5;
+                    
+                    particlesContainer.appendChild(particle);
+                    
+                    // Animate particles
+                    gsap.to(particle, {
+                        x: (Math.random() - 0.5) * 200,
+                        y: (Math.random() - 0.5) * 200,
+                        duration: 20 + Math.random() * 40,
+                        repeat: -1,
+                        yoyo: true,
+                        ease: "none"
+                    });
+                }
+            }       
+
+// Main function to show a specific stage
+function showStage(stage, immediate = false) {
+    if (isAnimating && !immediate) return;
+    
+    isAnimating = true;
+    
+    // Update control buttons
+    controlButtons.forEach(button => {
+        const buttonStage = parseInt(button.getAttribute('data-stage'));
+        button.classList.toggle('active', buttonStage === stage);
+    });
+    
+    // Update progress
+    const progress = ((stage - 1) / 6) * 100;
+    gsap.to(progressFill, {
+        width: `${progress}%`,
+        duration: immediate ? 0 : 0.5,
+        ease: "power2.inOut"
+    });
+    
+    // Update stage label
+    updateStageLabel(stage, immediate);
+    
+    // Update background
+    updateBackground(stage, immediate);
+    
+    // Initial position for the cube if not on first stage
+    if (!immediate && stage > 1) {
+        // Determine rotation direction based on stage change
+        const direction = stage > currentStage ? 1 : -1;
+        const rotationAxis = Math.random() > 0.5 ? 'X' : 'Y';
+        
+        // Rotate the cube
+        gsap.to(animationCube, {
+            [`rotate${rotationAxis}`]: `${direction * 90}deg`,
+            duration: 1.2,
+            ease: "power3.inOut",
+            onComplete: () => {
+                gsap.set(animationCube, { rotateX: 0, rotateY: 0 });
+            }
+        });
+    }
+    
+    // Wenn wir zurückgehen zu einer früheren Stufe, blende höhere Ebenen aus
+    if (stage < currentStage) {
+        for (let i = currentStage; i > stage; i--) {
+            const layerToHide = document.getElementById(`layer${i}`);
+            gsap.to(layerToHide, {
+                opacity: 0,
+                duration: immediate ? 0 : 0.5,
+                ease: "power2.inOut"
+            });
+        }
+    }
+    
+    // Stelle sicher, dass alle Ebenen bis zur aktuellen Stufe sichtbar sind
+    for (let i = 1; i <= stage; i++) {
+        const layer = document.getElementById(`layer${i}`);
+        
+        // Setze Z-Index basierend auf der Ebene
+        layer.style.zIndex = i;
+        
+        // Stelle sicher, dass jede vorherige Ebene sichtbar ist
+        if (i < stage) {
+            gsap.to(layer, {
+                opacity: 1,
+                scale: 1,
+                duration: immediate ? 0 : 0.5,
+                ease: "power2.out"
+            });
+        }
+    }
+    
+    // Show new layer with specific transitions for each stage
+    if (stage > 1) {
+        const newLayer = document.getElementById(`layer${stage}`);
+        
+        // Apply specific transitions for each stage
+        switch (stage) {
+            case 2:
+                // Zoom and blur transition for silhouette
+                gsap.set(newLayer, { opacity: 0, scale: 1.2});
+                
+                gsap.to(newLayer, {
+                    opacity: 1, 
+                    scale: 1,
+                    duration: immediate ? 0 : 1.2,
+                    ease: "power2.out",
+                    onComplete: animationComplete
+                });
+                
+                // Show clouds with staggered animation
+                const clouds = document.querySelectorAll('.cloud');
+                
+                if (!immediate) {
+                    gsap.fromTo(clouds, 
+                        { opacity: 0, y: -50, scale: 0.5 },
+                        {
+                            opacity: 0.9,
+                            y: 0,
+                            scale: 1,
+                            duration: 1,
+                            stagger: 0.1,
+                            ease: "back.out(1.7)"
+                        }
+                    );
+                } else {
+                    gsap.set(clouds, { opacity: 0.9, y: 0, scale: 1 });
+                }
+                break;
+                
+                case 3:
+    // Sequentielle Enthüllung der Körperteile
+    gsap.set(newLayer, { opacity: 0 });
+    
+    // Teile Layer 3 in mehrere Bereiche/Zonen auf
+    const bodyParts = [
+        { selector: '#layer3 .head', delay: 0 },
+        { selector: '#layer3 .arms', delay: 0.2 },
+        { selector: '#layer3 .torso', delay: 0.4 },
+        { selector: '#layer3 .legs', delay: 0.6 }
+    ];
+    
+    // Falls keine separaten Elemente verfügbar sind, simuliere den Effekt
+    // mit einer Clip-Path-Animation
+    gsap.fromTo(newLayer, 
+        { opacity: 0, clipPath: "polygon(50% 0%, 50% 0%, 50% 100%, 50% 100%)" },
+        { 
+            opacity: 1, 
+            clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+            duration: immediate ? 0 : 1.4,
+            ease: "power2.inOut",
+            onComplete: animationComplete
+        }
+    );
+    
+    // Zusätzlicher Effekt: pulsierender Glow-Effekt
+    if (!immediate) {
+        gsap.fromTo(newLayer, 
+            { filter: "brightness(1.5) blur(10px)" },
+            { 
+                filter: "brightness(1) blur(0px)", 
+                duration: 1.2, 
+                delay: 0.3,
+                ease: "power2.out" 
+            }
+        );
+    }
+    break;
+                
+            case 4:
+                // Astronaut
+                gsap.fromTo(newLayer, 
+                    { opacity: 0, scale: 0.7 },
+                    {
+                        opacity: 1, // Make slightly transparent to see layer1 underneath
+                        scale: 1,
+                        duration: immediate ? 0 : 1.2,
+                        ease: "elasticOut",
+                        onComplete: animationComplete
+                    }
+                );
+                break;
+                
+            case 5:
+                // Koala swing in from corner
+                gsap.fromTo(newLayer, 
+                    { opacity: 0, rotation: -10, x: '100%' },
+                    {
+                        opacity: 1, // Make slightly transparent to see layer1 underneath
+                        rotation: 0,
+                        x: 0,
+                        duration: immediate ? 0 : 1.5,
+                        ease: "softBack",
+                        onComplete: animationComplete
+                    }
+                );
+                
+                // Animate animals
+                if (!immediate) {
+                    const animals = document.querySelectorAll('.animal');
+                    
+                    gsap.fromTo(animals, 
+                        { opacity: 0, scale: 0.5, rotation: -10 },
+                        {
+                            opacity: 1,
+                            scale: 1,
+                            rotation: 0,
+                            duration: 1,
+                            stagger: 0.15,
+                            ease: "back.out(1.7)"
+                        }
+                    );
+                } else {
+                    gsap.set(document.querySelectorAll('.animal'), { opacity: 1, scale: 1 });
+                }
+                break;
+                
+            case 6:
+                // Balloons
+                gsap.set(newLayer, { opacity: 0, scale: 1.1});
+                
+                gsap.to(newLayer, {
+                    opacity: 1, // Make slightly transparent to see layer1 underneath
+                    scale: 1,
+                    duration: immediate ? 0 : 1.2,
+                    ease: "power3.out",
+                    onComplete: animationComplete
+                });
+
+                                // Animate balloons
+                const balloons = document.querySelectorAll('.balloon');
+                
+                if (!immediate) {
+                    gsap.fromTo(balloons, 
+                        { opacity: 0, y: 100, scale: 0.2 },
+                        {
+                            opacity: 1,
+                            y: 0,
+                            scale: 1,
+                            duration: 1.5,
+                            stagger: 0.05,
+                            ease: "back.out(1.7)"
+                        }
+                    );
+                    
+                    // Add floating animation to balloons
+                    balloons.forEach(balloon => {
+                        gsap.to(balloon, {
+                            y: '-=20',
+                            duration: 2 + Math.random() * 2,
+                            repeat: -1,
+                            yoyo: true,
+                            ease: "sine.inOut"
+                        });
+                    });
+                } else {
+                    gsap.set(balloons, { opacity: 1 });
+                }
+                
+                // Hide clouds and show stars
+                if (!immediate) {
+                    gsap.to(document.querySelectorAll('.cloud'), {
+                        opacity: 0,
+                        y: -30,
+                        duration: 0.5,
+                        stagger: 0.05
+                    });
+                    
+                    // Create stars effect
+                    createStarsEffect();
+                }
+                break;
+                
+            case 7:
+                // Final magical transformation
+                gsap.fromTo(newLayer, 
+                    { opacity: 0, scale: 1.2},
+                    {
+                        opacity: 1, // Make slightly transparent to see layer1 underneath
+                        scale: 1,
+                        duration: immediate ? 0 : 1.5,
+                        ease: "power3.out",
+                        onComplete: animationComplete
+                    }
+                );
+                
+                // Bring back all elements with magical entrance
+                if (!immediate) {
+                    const allElements = document.querySelectorAll('.element');
+                    
+                    gsap.fromTo(allElements, 
+                        { opacity: 0, scale: 0, rotation: Math.random() * 20 - 10 },
+                        {
+                            opacity: 1,
+                            scale: 1,
+                            rotation: 0,
+                            duration: 1.2,
+                            stagger: 0.03,
+                            ease: "back.out(1.7)"
+                        }
+                    );
+                    
+                    // Add subtle animations to all elements
+                    allElements.forEach(element => {
+                        const randomX = (Math.random() - 0.5) * 20;
+                        const randomY = (Math.random() - 0.5) * 20;
+                        const randomRotation = (Math.random() - 0.5) * 10;
+                        
+                        gsap.to(element, {
+                            x: randomX,
+                            y: randomY,
+                            rotation: randomRotation,
+                            duration: 5 + Math.random() * 5,
+                            repeat: -1,
+                            yoyo: true,
+                            ease: "sine.inOut"
+                        });
+                    });
+                } else {
+                    gsap.set(document.querySelectorAll('.element'), { opacity: 1, scale: 1 });
+                }
+                break;
+        }
+    } else {
+        // Stage 1 specific setup
+        // Für Stage 1 zeigen wir nur die erste Ebene, alle anderen sind ausgeblendet
+        gsap.to(document.getElementById('layer1'), {
+            opacity: 1,
+            scale: 1,
+            duration: immediate ? 0 : 0.5,
+            ease: "power2.out"
+        });
+        
+        for (let i = 2; i <= 7; i++) {
+            const layer = document.getElementById(`layer${i}`);
+            gsap.set(layer, { opacity: 0 });
+        }
+        
+        // Hide all elements
+        gsap.set(document.querySelectorAll('.element'), { opacity: 0 });
+        
+        isAnimating = false;
+    }
+    
+    // Update current stage
+    currentStage = stage;
+    
+    // Animation is complete if immediate
+    if (immediate) {
+        isAnimating = false;
+    }
+    
+    // Enable 3D effect on container for all stages now
+    if (!immediate) {
+        enable3DEffect();
+    }
+}
+            
+            // Update stage label
+            function updateStageLabel(stage, immediate = false) {
+                // Hide current label
+                gsap.to(stageLabel, {
+                    opacity: 0,
+                    y: -20,
+                    duration: immediate ? 0 : 0.3,
+                    onComplete: () => {
+                        // Update text
+                        stageLabel.textContent = stageLabels[stage - 1];
+                        
+                        // Show new label
+                        gsap.to(stageLabel, {
+                            opacity: 1,
+                            y: 0,
+                            duration: immediate ? 0 : 0.5
+                        });
+                    }
+                });
+            }
+            
+            // Update background color
+            function updateBackground(stage, immediate = false) {
+                gsap.to(bgGradient, {
+                    opacity: stage > 1 ? 1 : 0,
+                    duration: immediate ? 0 : 1
+                });
+                
+                bgGradient.style.background = bgColors[stage - 1];
+            }
+            
+            // Function called when animation is complete
+            function animationComplete() {
+                isAnimating = false;
+            }
+            
+            // Enable 3D parallax effect on the container
+            function enable3DEffect() {
+                const transformContainer = document.getElementById('transformContainer');
+                let isMouseOver = false;
+                
+                transformContainer.addEventListener('mouseenter', () => {
+                    isMouseOver = true;
+                });
+                
+                transformContainer.addEventListener('mouseleave', () => {
+                    isMouseOver = false;
+                    
+                    // Reset rotation when mouse leaves
+                    gsap.to(transformContainer, {
+                        rotateX: 0,
+                        rotateY: 0,
+                        duration: 1,
+                        ease: "power2.out"
+                    });
+                });
+                
+                transformContainer.addEventListener('mousemove', (e) => {
+                    if (!isMouseOver || isAnimating) return;
+                    
+                    const rect = transformContainer.getBoundingClientRect();
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    // Calculate mouse position relative to center
+                    const mouseX = e.clientX - rect.left - centerX;
+                    const mouseY = e.clientY - rect.top - centerY;
+                    
+                    // Normalize coordinates (-1 to 1)
+                    const normX = mouseX / centerX;
+                    const normY = mouseY / centerY;
+                    
+                    // Apply rotation (limit to 10 degrees)
+                    gsap.to(transformContainer, {
+                        rotateX: -normY * 10,
+                        rotateY: normX * 10,
+                        duration: 0.5,
+                        ease: "power2.out"
+                    });
+                });
+            }
+            
+            // Disable 3D effect
+            function disable3DEffect() {
+                const transformContainer = document.getElementById('transformContainer');
+                
+                // Remove event listeners and reset rotation
+                transformContainer.onmousemove = null;
+                transformContainer.onmouseleave = null;
+                transformContainer.onmouseenter = null;
+                
+                gsap.to(transformContainer, {
+                    rotateX: 0,
+                    rotateY: 0,
+                    duration: 0.5,
+                    ease: "power2.out"
+                });
+            }
+            
+            // Create stars effect for space theme
+            function createStarsEffect() {
+                const particlesContainer = document.getElementById('particlesContainer');
+                
+                // Clear existing particles
+                particlesContainer.innerHTML = '';
+                
+                // Create stars
+                for (let i = 0; i < 100; i++) {
+                    const star = document.createElement('div');
+                    star.classList.add('particle');
+                    
+                    const size = 1 + Math.random() * 3;
+                    const posX = Math.random() * 100;
+                    const posY = Math.random() * 100;
+                    
+                    star.style.width = `${size}px`;
+                    star.style.height = `${size}px`;
+                    star.style.left = `${posX}%`;
+                    star.style.top = `${posY}%`;
+                    star.style.opacity = 0.5 + Math.random() * 0.5;
+                    star.style.backgroundColor = '#ffffff';
+                    
+                    particlesContainer.appendChild(star);
+                    
+                    // Twinkle animation
+                    gsap.to(star, {
+                        opacity: 0.2 + Math.random() * 0.8,
+                        duration: 1 + Math.random() * 3,
+                        repeat: -1,
+                        yoyo: true,
+                        ease: "sine.inOut"
+                    });
+                }
+            }
+            
+            // Add keyboard controls
+            document.addEventListener('keydown', (e) => {
+                if (isAnimating) return;
+                
+                let newStage = currentStage;
+                
+                switch (e.key) {
+                    case 'ArrowRight':
+                    case 'ArrowDown':
+                    case ' ':
+                        newStage = Math.min(currentStage + 1, 7);
+                        break;
+                    case 'ArrowLeft':
+                    case 'ArrowUp':
+                        newStage = Math.max(currentStage - 1, 1);
+                        break;
+                    case '1':
+                    case '2':
+                    case '3':
+                    case '4':
+                    case '5':
+                    case '6':
+                    case '7':
+                        newStage = parseInt(e.key);
+                        break;
+                }
+                
+                if (newStage !== currentStage) {
+                    showStage(newStage);
+                }
+            });
+            
+            // Optional: Add touch swipe controls for mobile
+            let touchStartX = 0;
+            
+            document.addEventListener('touchstart', (e) => {
+                touchStartX = e.touches[0].clientX;
+            });
+            
+            document.addEventListener('touchend', (e) => {
+                if (isAnimating) return;
+                
+                const touchEndX = e.changedTouches[0].clientX;
+                const diffX = touchEndX - touchStartX;
+                
+                if (Math.abs(diffX) > 50) {
+                    if (diffX > 0) {
+                        // Swipe right - previous stage
+                        const newStage = Math.max(currentStage - 1, 1);
+                        if (newStage !== currentStage) showStage(newStage);
+                    } else {
+                        // Swipe left - next stage
+                        const newStage = Math.min(currentStage + 1, 7);
+                        if (newStage !== currentStage) showStage(newStage);
+                    }
+                }
+            });
+            
+            // Optional: Add auto progression after a period of inactivity
+            let inactivityTimer;
+            
+            function resetInactivityTimer() {
+                clearTimeout(inactivityTimer);
+                inactivityTimer = setTimeout(() => {
+                    if (currentStage < 7) {
+                        showStage(currentStage + 1);
+                    } else {
+                        showStage(1);
+                    }
+                }, 10000); // 10 seconds of inactivity
+            }
+            
+            // Reset the timer on user interaction
+            document.addEventListener('mousemove', resetInactivityTimer);
+            document.addEventListener('touchstart', resetInactivityTimer);
+            document.addEventListener('keydown', resetInactivityTimer);
+            
+            // Start the inactivity timer
+            resetInactivityTimer();
+        });
+    </script>
+    </body>
+    </html>
